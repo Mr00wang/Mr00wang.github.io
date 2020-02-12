@@ -164,9 +164,10 @@
 <p><strong>实现效果</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">双向链表</span><br><span class="line">HeroNode [no = <span class="number">1</span>, name = 宋江, nickname = 及时雨]</span><br><span class="line">HeroNode [no = <span class="number">2</span>, name = 卢俊义, nickname = 玉麒麟]</span><br><span class="line">HeroNode [no = <span class="number">3</span>, name = 吴用, nickname = 智多星]</span><br><span class="line">HeroNode [no = <span class="number">4</span>, name = 林冲, nickname = 豹子头]</span><br><span class="line">修改<span class="number">4</span>号</span><br><span class="line">修改后：</span><br><span class="line">HeroNode [no = <span class="number">1</span>, name = 宋江, nickname = 及时雨]</span><br><span class="line">HeroNode [no = <span class="number">2</span>, name = 卢俊义, nickname = 玉麒麟]</span><br><span class="line">HeroNode [no = <span class="number">3</span>, name = 吴用, nickname = 智多星]</span><br><span class="line">HeroNode [no = <span class="number">4</span>, name = 林冲..., nickname = 豹子...]</span><br><span class="line">删除吴用</span><br><span class="line">删除后：</span><br><span class="line">HeroNode [no = <span class="number">1</span>, name = 宋江, nickname = 及时雨]</span><br><span class="line">HeroNode [no = <span class="number">2</span>, name = 卢俊义, nickname = 玉麒麟]</span><br><span class="line">HeroNode [no = <span class="number">4</span>, name = 林冲..., nickname = 豹子...]</span><br></pre></td></tr></table></figure>
 
-<h2 id="四、单项环形链表应用场景"><a href="#四、单项环形链表应用场景" class="headerlink" title="四、单项环形链表应用场景"></a>四、单项环形链表应用场景</h2><blockquote>
+<h2 id="四、单向环形链表应用场景"><a href="#四、单向环形链表应用场景" class="headerlink" title="四、单向环形链表应用场景"></a>四、单向环形链表应用场景</h2><blockquote>
 <p>Josephu（约瑟夫、约瑟夫环）问题</p>
 </blockquote>
+<p>详细可以看这篇 </p>
 <p>加油！！！😘😘</p>]]></content>
       <categories>
         <category>Java算法与数据结构</category>
