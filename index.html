@@ -327,7 +327,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-13 02:30:35 / 修改时间：02:37:16" itemprop="dateCreated datePublished" datetime="2020-02-13T02:30:35+08:00">2020-02-13</time>
+              <time title="创建时间：2020-02-13 02:30:35 / 修改时间：02:43:42" itemprop="dateCreated datePublished" datetime="2020-02-13T02:30:35+08:00">2020-02-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,56 +367,14 @@
 
       
           <p><img src="/2020/02/13/CircleLinkedList/bg.jpg" alt></p>
-<h1 id="单向循环链表"><a href="#单向循环链表" class="headerlink" title="单向循环链表"></a>单向循环链表</h1><h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><blockquote>
-<p>循环链表跟单链表的区在尾结点指针是指向链表的头结点。和单链表相比，循环链表的优点是从链尾到链头比较方便。当要处理的数据具有环型结构特点时，采用循环链表实现代码会简洁很多。</p>
-</blockquote>
-<p><img src="/2020/02/13/CircleLinkedList/circlelinkedlist1.jpg" alt></p>
-<h2 id="Josephu问题"><a href="#Josephu问题" class="headerlink" title="Josephu问题"></a>Josephu问题</h2><blockquote>
-<p>N个人坐成一个圆环（编号为1 - N），从第1个人开始报数✋，数到K的人出列，后面的人重新从1开始报数。问最后剩下的人的编号。</p>
-</blockquote>
-<p>👉<strong>思路：</strong></p>
-<blockquote>
-<p>用一个不带头结点的循环链表来处理Josephu 问题：先构成一个有n个结点的单循环链表，然后由k结点起从1开始计数，计到m时，对应结点从链表中删除，然后再从被删除结点的下一个结点又从1开始计数，直到最后一个结点从链表中删除算法结束。</p>
-</blockquote>
-<h2 id="约瑟夫环-51Nod-1073"><a href="#约瑟夫环-51Nod-1073" class="headerlink" title="约瑟夫环  51Nod - 1073"></a>约瑟夫环  51Nod - 1073</h2><p>例如：N = 3，K = 2。2号先出列，然后是1号，最后剩下的是3号。</p>
-<p><strong>Input</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2个数N和K，表示N个人，数到K出列。(2 &lt;&#x3D; N, K &lt;&#x3D; 10^6)</span><br></pre></td></tr></table></figure>
-
-<p>Output</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最后剩下的人的编号</span><br></pre></td></tr></table></figure>
-
-<p>Sample Input</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br></pre></td></tr></table></figure>
-
-<p>Sample Output</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<p>对于这道OJ题可以通过递归的方法，找到其中的规律便可AC，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = scanner.nextInt();</span><br><span class="line">        <span class="keyword">int</span> k = scanner.nextInt();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            ans = (ans + k) % i;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(ans + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>👉以此题为例，使用单项循环链表的方式实现，<code>但是不能作为此题AC的代码，会超时！</code>思路如下：</p>
-<blockquote>
-<p>首先构建一个单向的环形链表</p>
-</blockquote>
-<ol>
-<li>先创建第一个节点, 让 first 指向该节点，并形成环形⚪</li>
-<li>后面当我们每创建一个新的节点，就把该节点，加入到已有的环形链表中即可.f</li>
-</ol>
-<blockquote>
-<p>然后进行报数出圈</p>
-</blockquote>
-<ol>
-<li>需要创建一个辅助指针(变量) helper , 首先让其指向环形链表的最后这个节点</li>
-<li>当开始报数时，让first 和 helper 指针同时 的移动  k  - 1 次 🐌🐌</li>
-<li>这时就可以将first 指向的节点 出圈<br>first = first .next<br>helper.next = first </li>
-<li>然后直到圈内只有最后一个人，即最后一个节点的时候（first == helper）结束循环🔄</li>
-<li>最后的first中的编号即为最后一个人的编号</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = scanner.nextInt();</span><br><span class="line">        <span class="keyword">int</span> k = scanner.nextInt();</span><br><span class="line">        addNode(n);</span><br><span class="line">        countNode(n, k);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Node first = <span class="keyword">null</span>; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(<span class="keyword">int</span> nums)</span> </span>&#123;</span><br><span class="line">        Node current = <span class="keyword">null</span>; <span class="comment">// 辅助指针</span></span><br><span class="line">        <span class="comment">//创建一个循环链表</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= nums; i++) &#123;</span><br><span class="line">            Node node = <span class="keyword">new</span> Node(i);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">1</span>) &#123; <span class="comment">//first指向第一个孩子</span></span><br><span class="line">                first = node;</span><br><span class="line">                first.next = first;</span><br><span class="line">                current = first; <span class="comment">//</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                current.next = node;</span><br><span class="line">                node.next = first;</span><br><span class="line">                current = node;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">countNode</span><span class="params">(<span class="keyword">int</span> nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个辅助指针helper</span></span><br><span class="line">        Node helper = first;</span><br><span class="line">        <span class="comment">//需要创建一个辅助指针helper，事先应该指向环形链表的最后这个节点</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (helper.next == first) &#123; <span class="comment">//说明helper指向最后一个节点</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            helper = helper.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//当报数时，让first 和 helper指针同时移动 k- 1次，然后出圈</span></span><br><span class="line">        <span class="comment">//这是一个循环操作，直到圈中只有一个节点</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (first == helper) &#123;<span class="comment">//说明圈中只有一个节点</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k - <span class="number">1</span>; i++) &#123;</span><br><span class="line">                first = first.next;</span><br><span class="line">                helper = helper.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//这是first指向的节点，就是要出圈的节点</span></span><br><span class="line">            first = first.next;</span><br><span class="line">            helper.next = first;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(first.no);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个Node节点类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> no;</span><br><span class="line">    <span class="keyword">public</span> Node next;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> no)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.no = no;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/13/CircleLinkedList/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -471,10 +429,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-12 16:39:33 / 修改时间：22:36:09" itemprop="dateCreated datePublished" datetime="2020-02-12T16:39:33+08:00">2020-02-12</time>
+              <time title="创建时间：2020-02-12 16:39:33" itemprop="dateCreated datePublished" datetime="2020-02-12T16:39:33+08:00">2020-02-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-13 02:41:18" itemprop="dateModified" datetime="2020-02-13T02:41:18+08:00">2020-02-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
