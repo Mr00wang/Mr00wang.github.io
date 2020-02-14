@@ -6,7 +6,7 @@
     <content><![CDATA[<h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><blockquote>
 <p>队列是先进先出的数据结构，即FIFO原则，而栈是一种后进先出的数据结构</p>
 </blockquote>
-<p><img src="/2020/02/14/Stack/stack1.jpg" alt="stack1"></p>
+<p><img src="/2020/02/14/Stack/stack1.jpg" alt></p>
 <h2 id="1、栈的特性"><a href="#1、栈的特性" class="headerlink" title="1、栈的特性"></a>1、栈的特性</h2><ul>
 <li><p>“先入后出”（FILO）原则</p>
 </li>
