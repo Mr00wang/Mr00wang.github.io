@@ -54,7 +54,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mr00wang.github.io/2020/02/14/Stack/stack1.jpg">
 <meta property="article:published_time" content="2020-02-14T14:32:05.000Z">
-<meta property="article:modified_time" content="2020-02-14T14:48:49.312Z">
+<meta property="article:modified_time" content="2020-02-29T12:34:51.379Z">
 <meta property="article:author" content="北以晨光">
 <meta property="article:tag" content="算法与数据结构">
 <meta property="article:tag" content="栈">
@@ -218,10 +218,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-14 22:32:05 / 修改时间：22:48:49" itemprop="dateCreated datePublished" datetime="2020-02-14T22:32:05+08:00">2020-02-14</time>
+              <time title="创建时间：2020-02-14 22:32:05" itemprop="dateCreated datePublished" datetime="2020-02-14T22:32:05+08:00">2020-02-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-29 20:34:51" itemprop="dateModified" datetime="2020-02-29T20:34:51+08:00">2020-02-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -301,7 +307,7 @@
 <p><strong>代码实现：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArraryDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//测试栈</span></span><br><span class="line">        ArrayStack stack = <span class="keyword">new</span> ArrayStack(<span class="number">4</span>);</span><br><span class="line">        String key = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">boolean</span> loop = <span class="keyword">true</span>;</span><br><span class="line">        Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (loop) &#123;</span><br><span class="line">            System.out.println(<span class="string">"show: 显示栈"</span>);</span><br><span class="line">            System.out.println(<span class="string">"exit: 退出程序"</span>);</span><br><span class="line">            System.out.println(<span class="string">"push: 入栈"</span>);</span><br><span class="line">            System.out.println(<span class="string">"pop: 出栈"</span>);</span><br><span class="line">            System.out.println(<span class="string">"请选择"</span>);</span><br><span class="line">            key = scanner.next();</span><br><span class="line">            <span class="keyword">switch</span> (key) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"show"</span>:</span><br><span class="line">                    stack.list();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"exit"</span>:</span><br><span class="line">                    scanner.close();</span><br><span class="line">                    loop = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"push"</span>:</span><br><span class="line">                    System.out.println(<span class="string">"请输入添加的数据"</span>);</span><br><span class="line">                    <span class="keyword">int</span> value = scanner.nextInt();</span><br><span class="line">                    stack.push(value);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">"pop"</span>:</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="keyword">int</span> res = stack.pop();</span><br><span class="line">                        System.out.println(<span class="string">"出栈的数据为"</span> + res);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        System.out.println(e.getMessage());</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"程序退出"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个ArrayStack栈</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayStack</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxSize; <span class="comment">//栈的大小</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> [] stack; <span class="comment">//数组模拟栈，数据就放在该数组</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> top = -<span class="number">1</span>; <span class="comment">//top表示栈顶</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayStack</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">        stack = <span class="keyword">new</span> <span class="keyword">int</span>[maxSize];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断栈满</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> top == maxSize - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断栈空</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> top == -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//入栈push</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先判断栈满</span></span><br><span class="line">        <span class="keyword">if</span> (isFull()) &#123;</span><br><span class="line">            System.out.println(<span class="string">"栈满"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        top++;</span><br><span class="line">        stack[top] = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//出栈pop</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//判断栈空</span></span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"栈空"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> value = stack[top];</span><br><span class="line">        top--;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历栈，遍历时，需要从栈顶开始显示数据</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            System.out.println(<span class="string">"栈空"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = top; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            System.out.println(<span class="string">"stack["</span> + i + <span class="string">"] = "</span> + stack[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="（2）链表模拟战"><a href="#（2）链表模拟战" class="headerlink" title="（2）链表模拟战"></a>（2）链表模拟战</h3><p><strong>思路：</strong></p>
+<h3 id="（2）链表模拟栈"><a href="#（2）链表模拟栈" class="headerlink" title="（2）链表模拟栈"></a>（2）链表模拟栈</h3><p><strong>思路：</strong></p>
 <ol>
 <li><p>定义一个节点类Node</p>
 </li>
@@ -362,6 +368,9 @@
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="\2020\01\21\SortAlgorithm\" rel="bookmark">Java算法与数据结构之排序（一）</a></div>
     </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\02\29\StackApply1\" rel="bookmark">栈实现中缀表达式</a></div>
+    </li>
   </ul>
 
         <div class="reward-container">
@@ -417,7 +426,10 @@
     <a href="/2020/02/13/CircleLinkedList/" rel="prev" title="Java算法与数据结构之单向环形链表">
       <i class="fa fa-chevron-left"></i> Java算法与数据结构之单向环形链表
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/29/StackApply1/" rel="next" title="栈实现中缀表达式">
+      栈实现中缀表达式 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -477,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#栈（Stack）"><span class="nav-text">栈（Stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、栈的特性"><span class="nav-text">1、栈的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、栈的应用"><span class="nav-text">2、栈的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、栈的实现"><span class="nav-text">3、栈的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）数组模拟栈"><span class="nav-text">（1）数组模拟栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）链表模拟战"><span class="nav-text">（2）链表模拟战</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#栈（Stack）"><span class="nav-text">栈（Stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、栈的特性"><span class="nav-text">1、栈的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、栈的应用"><span class="nav-text">2、栈的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、栈的实现"><span class="nav-text">3、栈的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）数组模拟栈"><span class="nav-text">（1）数组模拟栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）链表模拟栈"><span class="nav-text">（2）链表模拟栈</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -494,7 +506,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -563,13 +575,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">62k</span>
+    <span title="站点总字数">66k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">1:01</span>
 </div>
 
 
