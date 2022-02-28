@@ -1136,7 +1136,7 @@ pre .javascript .function {
 .menu {
   background: rgba(255,255,255,0.65);
   width: 400px;
-  margin-left: 240px;
+  margin-left: 195px;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 0px;
@@ -1377,7 +1377,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4a5203;
+  background: #a31fff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2482,6 +2482,10 @@ ul.breadcrumb li + li:last-child {
   font-weight: normal;
   line-height: 2.4;
   margin: 0;
+}
+.has-jax {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 @media (max-width: 767px) {
   .header-inner,

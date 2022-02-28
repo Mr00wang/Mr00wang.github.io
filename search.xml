@@ -1,11 +1,450 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构-排序（五）快速排序</title>
+    <url>/2021/12/13/Sort5/</url>
+    <content><![CDATA[<h1 id="数据结构-排序（五）快速排序"><a href="#数据结构-排序（五）快速排序" class="headerlink" title="数据结构-排序（五）快速排序"></a>数据结构-排序（五）快速排序</h1><h2 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h2><blockquote>
+<p><strong>算法思想：</strong>在待排序表L[1…n]中任取⼀个元素pivot作为枢轴（或基准，通常取首元素），通过⼀趟排序将待排序表划分为独立的两部分L[1…k-1]和L[k+1…n]，使得L[1…k-1]中的所有元素小于pivot，L[k+1…n]中的所有元素大于等于pivot，则pivot放在了其最终位置L(k)上， 这个过程称为⼀次“划分”。然后分别递归地对两个子表重复上述过程，直至每部分内只有⼀个元素或空为止，即所有元素放在了其最终位置上。  </p>
+<p><strong>举个栗子🌰</strong> ，将 <strong>4 1 6 2 9 3</strong> 进行快速排序</p>
+<p>​    首先在这个序列中随便找一个基准数（pivot）。为了方便，<strong>通常让第一个数 4 作为基准数</strong>。接下来，需要将这个序列所有<strong>比基准数大的数放在4的右边</strong>，比准数小的数放在 4 的左边，即：</p>
+<p>​         3    1    2    <u><strong>4</strong></u>    9    6</p>
+<p>​    在初始状态下，数字4在序列的第一位。我们需要将 4 挪到中间的一个位置，假设这个位置是k。现在需要找这个k，并且以k为分界点，左边的数都小于等于4，右边的数都是大于等于4。</p>
+<p>​    分别从初始序列“4   1   6   2   9   3”<strong>两端开始勘测</strong>。定义变量pivot存储基准数4，然后<strong>先从左往右</strong>找一个小于4的数，找到后，将其与放到左边，即放到4，4放到6，<strong>再从右往左</strong>找一个大于4的数，<strong>然后将其放到上一个小于基准数4的位置，即上个6，现在4的位置。</strong>这里可以<strong>用两个变量low 和 high，分别指向序列最左边和最右边（即两个哨兵）</strong>。刚开始的时候 <strong>“哨兵low”</strong> 指向序列最左边（即i=1）,指向数字4，<strong>“哨兵high”</strong>指向序列最右边（即j=6）,指向数字3。</p>
+<p>​    <strong>哨兵high开始出动</strong>。因为基准数设置为最左边的数。<strong>哨兵high</strong>一步一步<strong>向左挪动</strong>（即<strong>high–</strong>），<strong>直到找到一个小于4的数停下来</strong>，<strong>哨兵j</strong>停在了数字3上。接下来<strong>哨兵high与哨兵low交换</strong></p>
+<p><img src="/2021/12/13/Sort5/1.png" alt></p>
+<p>交换后序列如下</p>
+<p>​          <u><strong>3</strong></u>   1   6   2   9   <u><strong>4</strong></u></p>
+<p><strong>接下来哨兵low再一步一步向右挪动（即low++）</strong>，<strong>直到找到一个大于4的数停下来</strong>。<strong>哨兵low</strong>停在了数字6上。<strong>哨兵low与哨兵high交换</strong></p>
+<p><img src="/2021/12/13/Sort5/2.png" alt></p>
+<p>交换后序列如下</p>
+<p>​          <u><strong>3</strong></u>   1   <u><strong>4</strong></u>   2   9   <u><strong>6</strong></u></p>
+<p>然后<strong>哨兵high,哨兵low</strong>继续移动<strong>直到相遇</strong>。<strong>然后将pivot赋值给哨兵</strong></p>
+<p><img src="/2021/12/13/Sort5/3.png" alt></p>
+<p>相遇后与基准数交换后的序列为：</p>
+<p>​          3   1   2    <u><strong>4</strong></u>   9   6</p>
+<p>现在基准数4已经归位，此时，我们以4(基准数)为分界点<strong>拆分为两个序列</strong>，左边为“3    1    2”，右边序列为“9    6”。接下来我们按照第一轮勘测的方法继续处理。<strong>直到不可拆分出新的子序列为止</strong>。</p>
+<p><img src="/2021/12/13/Sort5/4.png" alt></p>
+</blockquote>
+<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用第一个元素将待排序序列划分成左右两个部分</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param low</span></span><br><span class="line"><span class="comment"> * @param high</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pivot = arr[low]; <span class="comment">//第一个元素作为枢纽</span></span><br><span class="line">    <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high &amp;&amp; arr[high] &gt;= pivot) <span class="comment">//比枢轴小的元素移动到左端</span></span><br><span class="line">            --high;</span><br><span class="line">        arr[low] = arr[high];</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high &amp;&amp; arr[low] &lt;= pivot)  <span class="comment">//比枢轴大的元素移动到右端</span></span><br><span class="line">            ++low;</span><br><span class="line">        arr[high] = arr[low];</span><br><span class="line">    &#125;</span><br><span class="line">    arr[high] = pivot; <span class="comment">//枢轴元素存放到最终位置</span></span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 快速排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param low</span></span><br><span class="line"><span class="comment"> * @param high</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">int</span> pivotPos = Partition(arr, low, high);</span><br><span class="line">        QuickSort1(arr, low, pivotPos - <span class="number">1</span>); <span class="comment">//划分左子表</span></span><br><span class="line">        QuickSort1(arr, pivotPos + <span class="number">1</span>, high); <span class="comment">//划分右子表</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出数组</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">12</span>, <span class="number">28</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">48</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">28</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr初始数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr快速排序"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    QuickSort(arr, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr排序后数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、算法效率分析"><a href="#3、算法效率分析" class="headerlink" title="3、算法效率分析"></a>3、算法效率分析</h2><blockquote>
+<p>把n个元素组织成⼆叉树，⼆叉树的层数就是递归调用的层数<br>第⼀层QuickSort处理后：n个结点的⼆叉树最小高度 = ⌊log2n⌋ + 1  ；最大高度 = n</p>
+<p><strong>1、空间复杂度： O(递归层数)</strong>  </p>
+<p>最好空间复杂度：$O(log_2n)$</p>
+<p>最坏空间复杂度：$O(n)$  </p>
+<p><strong>2、时间复杂度 O(n*递归层数)</strong>  </p>
+<p>最好时间复杂度：$O(nlog_2n)$  每次选的枢轴元素都能将序列划分成均匀的两部分  </p>
+<p>最坏时间复杂度：$O(n^2)$  若序列原本就有序或逆序，则时、空复杂度最⾼（可优化，尽量选择可以把数据中分的枢轴元素。）  </p>
+<p><strong>快速排序是所有内部排序算法中平均性能最优的排序算法</strong>  </p>
+<p><strong>3、稳定性：不稳定</strong></p>
+<p><strong>4、快速排序算法优化思路：</strong>尽量选择可以把数据中分的枢轴元素。<br>eg：①选头、中、尾三个位置的元素，取中间值作为枢轴元素；②随机选⼀个元素作为枢轴元素  </p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-排序（四）冒泡排序</title>
+    <url>/2021/12/01/Sort4/</url>
+    <content><![CDATA[<h1 id="数据结构-排序（四）冒泡排序"><a href="#数据结构-排序（四）冒泡排序" class="headerlink" title="数据结构-排序（四）冒泡排序"></a>数据结构-排序（四）冒泡排序</h1><p><img src="/2021/12/01/Sort4/1.png" alt></p>
+<h2 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h2><blockquote>
+<p><strong>基于“交换”的排序：</strong> 根据序列中两个元素关键字的比较结果来对换这两个记录在序列中的位置  </p>
+<p><strong>冒泡排序的算法思想是：</strong> 每次<strong>比较两个相邻的元素</strong>，<strong>若为逆序（即A[i-1]&gt;A[i]）顺序错误，就把他们交换过来</strong>。从第一个元素起。比较相邻的元素，如果第一个比第一个大，就交换。然后继续比较，直到最大的数到最后一个。称这样过程为“⼀趟”冒泡排序。所有元素重复以上动作。直到序列比较完。 </p>
+<p><strong>举个例子</strong>，需要对数组a[5,8,3,4,2]进行从小到大排序</p>
+<p>从小到大排序就需要将最大的数冒到最后面</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++)&#123; <span class="comment">// 5个数排序，只用进行n-1趟，即4趟</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; a.length - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line"><span class="comment">//从第1位开始比较直到最后一个归位的数，i可以认为为已经归位了几个数字</span></span><br><span class="line"><span class="comment">//第一趟 i = 0</span></span><br><span class="line">第一次: <span class="number">5</span> <span class="number">8</span> <span class="number">3</span> <span class="number">4</span> <span class="number">2</span>   (j = <span class="number">0</span>) <span class="comment">//5和8比较</span></span><br><span class="line">第二次: <span class="number">5</span> <span class="number">3</span> <span class="number">8</span> <span class="number">4</span> <span class="number">2</span>   (j = <span class="number">1</span>) <span class="comment">//8和3比较</span></span><br><span class="line">第三次: <span class="number">5</span> <span class="number">3</span> <span class="number">4</span> <span class="number">8</span> <span class="number">2</span>   (j = <span class="number">2</span>) <span class="comment">//8和4比较</span></span><br><span class="line">第四次: <span class="number">5</span> <span class="number">3</span> <span class="number">4</span> <span class="number">2</span> [<span class="number">8</span>] (j = <span class="number">3</span>) <span class="comment">//8和2比较，8归位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第二趟 i = 1</span></span><br><span class="line">第一次: <span class="number">3</span> <span class="number">5</span> <span class="number">4</span> <span class="number">2</span> [<span class="number">8</span>] (j = <span class="number">0</span>) <span class="comment">//5和3比较</span></span><br><span class="line">第二次: <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">2</span> [<span class="number">8</span>] (j = <span class="number">1</span>) <span class="comment">//5和4比较</span></span><br><span class="line">第三次: <span class="number">3</span> <span class="number">4</span> <span class="number">2</span> <span class="number">5</span> [<span class="number">8</span>] (j = <span class="number">2</span>) <span class="comment">//5和2比较，5归位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第三趟 i = 2</span></span><br><span class="line">第一次: <span class="number">3</span> <span class="number">4</span> <span class="number">2</span> [<span class="number">5</span> <span class="number">8</span>] (j = <span class="number">0</span>) <span class="comment">//3和4比较</span></span><br><span class="line">第二次: <span class="number">3</span> <span class="number">2</span> [<span class="number">4</span> <span class="number">5</span> <span class="number">8</span>] (j = <span class="number">1</span>) <span class="comment">//4和2比较，4归位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第四趟 i = 3</span></span><br><span class="line">第一次: <span class="number">2</span> [<span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">8</span>] (j = <span class="number">0</span>) <span class="comment">//3和2比较，2,3归位</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/12/01/Sort4/2.gif" alt><br>以上gif动图制作，图像来自网站：<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">VisuAlgo</a></p>
+</blockquote>
+<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++) &#123; <span class="comment">//一趟冒泡排序</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123; <span class="comment">//升序排列</span></span><br><span class="line">                <span class="comment">//arr[j] &gt; arr[j + 1] 降序排列</span></span><br><span class="line">                swap(arr[j], arr[j + <span class="number">1</span>]); <span class="comment">//交换顺序数值函数</span></span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//for</span></span><br><span class="line">        <span class="keyword">if</span> (!flag) &#123; <span class="comment">//本趟遍历后没有交换顺序，说明已经有序</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出数组</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">12</span>, <span class="number">28</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">48</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">28</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr初始数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr冒泡排序"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    BubbleSort(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr排序后数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">输出arr初始数组</span><br><span class="line"><span class="number">12</span>  <span class="number">28</span>  <span class="number">20</span>  <span class="number">50</span>  <span class="number">48</span>  <span class="number">1</span>  <span class="number">5</span>  <span class="number">28</span></span><br><span class="line">arr冒泡排序</span><br><span class="line">输出arr排序后数组</span><br><span class="line"><span class="number">1</span>  <span class="number">5</span>  <span class="number">12</span>  <span class="number">20</span>  <span class="number">28</span>  <span class="number">28</span>  <span class="number">48</span>  <span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、算法效率分析"><a href="#3、算法效率分析" class="headerlink" title="3、算法效率分析"></a>3、算法效率分析</h2><blockquote>
+<p><strong>1、空间复杂度：</strong> $O(1)$  </p>
+<p><strong>2、时间复杂度</strong></p>
+<p><strong>最好情况（有序）：</strong>  $比较次数 = n - 1；交换次数 = 0；最好时间复杂度 = O(n)$</p>
+<p><strong>最坏情况（逆序）：</strong>  </p>
+<p>$比较次数 = (n - 1) + (n - 2 )+…+ 1 = \frac{n(n-1)}{2} = 交换次数；最坏时间复杂度 = O(n^2)$</p>
+<p><strong>平均时间复杂度:</strong>  $O(n^2)$ </p>
+<p><strong>3、稳定性：</strong> 稳定</p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-排序（三）希尔排序</title>
+    <url>/2021/12/01/Sort3/</url>
+    <content><![CDATA[<h1 id="数据结构-排序（三）希尔排序"><a href="#数据结构-排序（三）希尔排序" class="headerlink" title="数据结构-排序（三）希尔排序"></a>数据结构-排序（三）希尔排序</h1><p><img src="/2021/12/01/Sort3/1.png" alt></p>
+<h2 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h2><blockquote>
+<p><strong>算法思想：</strong> </p>
+<p>先追求表中元素部分有序，再逐渐逼近全局有序，先将待排序表分割成若干形如 $L[i, i + d, i + 2d,…, i + kd]$ 的“特殊”子表，对各个子表分别进行<strong>直接插入排序，缩小增量d</strong>，重复上述过程，直到d = 1为止。  <strong>第一趟一般d = n / 2，往后 d = d / 2 。每次将增量缩小⼀半</strong> </p>
+<p><strong>例子：</strong></p>
+<p>对数组【12  28  20  50  48  1  5  28】进行排序</p>
+<p><strong>第一趟</strong></p>
+<p><img src="/2021/12/01/Sort3/2.png" alt></p>
+<p><strong>第二趟</strong></p>
+<p><img src="/2021/12/01/Sort3/3.png" alt></p>
+<p><strong>第三趟</strong></p>
+<p><img src="/2021/12/01/Sort3/4.png" alt></p>
+</blockquote>
+<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 希尔排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d, j;</span><br><span class="line">    <span class="keyword">for</span> (d = n / <span class="number">2</span>; d &gt;= <span class="number">1</span>; d = d / <span class="number">2</span>) &#123; <span class="comment">//步长变化</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = d + <span class="number">1</span>; i &lt;= n ; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &lt; arr[i - d]) &#123; <span class="comment">//arr[i]插入有序增量表</span></span><br><span class="line">                arr[<span class="number">0</span>] = arr[i]; <span class="comment">//暂存</span></span><br><span class="line">                <span class="keyword">for</span> (j = i - d; j &gt; <span class="number">0</span> &amp;&amp; arr[<span class="number">0</span>] &lt; arr[j] ; j -= d) &#123;</span><br><span class="line">                    arr[j + d] = arr[j]; <span class="comment">//记录后移，查找插入位置</span></span><br><span class="line">                &#125;</span><br><span class="line">                arr[j + d] = arr[<span class="number">0</span>]; <span class="comment">//插入数据</span></span><br><span class="line">            &#125;<span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//for</span></span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、算法复杂度分析"><a href="#3、算法复杂度分析" class="headerlink" title="3、算法复杂度分析"></a>3、算法复杂度分析</h2><blockquote>
+<p><strong>时间复杂度：</strong>和增量序列 d1, d2, d3… 的选择有关，目前无法用数学手段证明确切的时间复杂度，最坏时间复杂度为 $O(n^2)$，当n在某个范围内时，可达$O(n^{1.3})$  </p>
+<p><strong>空间复杂度：</strong> $O(1)$</p>
+<p><strong>稳定性：</strong>不稳定</p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-排序（二）插入排序</title>
+    <url>/2021/11/24/Sort2/</url>
+    <content><![CDATA[<h1 id="数据结构-排序（二）插入排序"><a href="#数据结构-排序（二）插入排序" class="headerlink" title="数据结构-排序（二）插入排序"></a>数据结构-排序（二）插入排序</h1><p><img src="/2021/11/24/Sort2/1.png" alt></p>
+<h2 id="一、-直接插入排序"><a href="#一、-直接插入排序" class="headerlink" title="一、 直接插入排序"></a>一、 直接插入排序</h2><h3 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h3><blockquote>
+<p><strong>算法思想：</strong> 每次将⼀个待排序的记录按其关键字大小插入到前面已排好序的子序列中，直到全部记录插⼊完成。 </p>
+<p><strong>排序过程：</strong></p>
+<ul>
+<li>整个排序过程为n-1趟插入，</li>
+<li>先将序列中第1个记录看成是一个有序子序列，</li>
+<li>然后从第2个记录开始，逐个进行插入，直至整个序列有序。</li>
+</ul>
+<p><img src="/2021/11/24/Sort2/2.gif" alt></p>
+<p>以上gif动图制作，图像来自网站：<a href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener">VisuAlgo</a></p>
+<p>链表实现请参考：<a href="https://blog.csdn.net/weixin_43533538/article/details/121450105?spm=1001.2014.3001.5501" target="_blank" rel="noopener">链表实现直接插入排序</a></p>
+</blockquote>
+<h3 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入排序</span></span><br><span class="line"><span class="comment"> * @param arr  数组</span></span><br><span class="line"><span class="comment"> * @param n  数据个数</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt; arr[i - <span class="number">1</span>]) &#123; <span class="comment">//若关键字小于前驱</span></span><br><span class="line">            <span class="keyword">int</span> t = arr[i]; <span class="comment">//暂存关键字</span></span><br><span class="line">            <span class="keyword">int</span> j;</span><br><span class="line">            <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; t ; j--) &#123; <span class="comment">//检查前面排序的元素</span></span><br><span class="line">                arr[j + <span class="number">1</span>] = arr[j]; <span class="comment">//所有大于t的元素完后挪位</span></span><br><span class="line">            &#125;</span><br><span class="line">            arr[j + <span class="number">1</span>] = t; <span class="comment">//复制到插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出数组</span></span><br><span class="line"><span class="comment"> * @param arr </span></span><br><span class="line"><span class="comment"> * @param n </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">12</span>, <span class="number">28</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">48</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">28</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出初始数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"直接插入排序"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    InsertSort(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出排序后数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">输出初始数组</span><br><span class="line"><span class="number">12</span>  <span class="number">28</span>  <span class="number">20</span>  <span class="number">50</span>  <span class="number">48</span>  <span class="number">1</span>  <span class="number">5</span>  <span class="number">28</span></span><br><span class="line">直接插入排序</span><br><span class="line">输出排序后数组</span><br><span class="line"><span class="number">1</span>  <span class="number">5</span>  <span class="number">12</span>  <span class="number">20</span>  <span class="number">28</span>  <span class="number">28</span>  <span class="number">48</span>  <span class="number">50</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、算法效率分析"><a href="#3、算法效率分析" class="headerlink" title="3、算法效率分析"></a>3、算法效率分析</h3><blockquote>
+<p><strong>1、空间复杂度：</strong> O(1)  </p>
+<p><strong>2、时间复杂度：</strong> 主要来自对比关键字、移动元素若有 n 个元素，则需要 n-1 趟处理  </p>
+<p><strong>最好情况：</strong>共n-1趟处理，每⼀趟只需要对比关键字1次，不⽤移动元素 </p>
+<p><strong>最好时间复杂度—— O(n)</strong></p>
+<p><strong>最坏情况：</strong><br>第1趟：对比关键字2次，移动元素3次<br>第2趟：对比关键字3次，移动元素4次<br>…<br>第 i 趟：对比关键字 i+1次，移动元素 i+2 次    </p>
+<p><strong>最坏时间复杂度——$O(n^2)$</strong>  </p>
+<p>最好时间复杂度（全部有序）：O(n)</p>
+<p>最坏时间复杂度（全部逆序）：$O(n^2)$</p>
+<p><strong>平均时间复杂度：$O(n^2)$</strong></p>
+<p><strong>3、算法稳定性：</strong> 稳定  </p>
+</blockquote>
+<h2 id="二、折半插入排序"><a href="#二、折半插入排序" class="headerlink" title="二、折半插入排序"></a>二、折半插入排序</h2><h3 id="1、算法思想-1"><a href="#1、算法思想-1" class="headerlink" title="1、算法思想"></a>1、算法思想</h3><blockquote>
+<p><strong>算法思想：</strong> 先用折半查找找到应该插⼊的位置，再移动元素  </p>
+<ul>
+<li>当 low &gt; high 时折半查找停止，应将 [low, i-1] 内的元素全部右移，并将 A[0] 复制到 low 所指位置  </li>
+<li>当 A[mid] == A[0] 时，为了保证算法的<strong>“稳定性”</strong>，应继续在 mid 所指位置右边寻找插入位置  </li>
+</ul>
+</blockquote>
+<h3 id="2、代码实现-1"><a href="#2、代码实现-1" class="headerlink" title="2、代码实现"></a>2、代码实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 折半插入排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SplitInsertSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n ; i++) &#123;</span><br><span class="line">        arr[<span class="number">0</span>] = arr[i]; <span class="comment">//暂存关键字</span></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">1</span>, high = i - <span class="number">1</span>; <span class="comment">//折半查找范围</span></span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123; <span class="comment">//折半查找</span></span><br><span class="line">            <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (arr[mid] &gt; arr[<span class="number">0</span>]) &#123; <span class="comment">//查找左子表</span></span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123; <span class="comment">//查找右半子表</span></span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= high + <span class="number">1</span> ; --j) &#123;</span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j]; <span class="comment">//统一后移操作，空出插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">        arr[high + <span class="number">1</span>] = arr[<span class="number">0</span>]; <span class="comment">//插入操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、算法效率分析-1"><a href="#3、算法效率分析-1" class="headerlink" title="3、算法效率分析"></a>3、算法效率分析</h3><blockquote>
+<p><strong>1、空间复杂度：</strong> O(1)  </p>
+<p><strong>2、时间复杂度：</strong></p>
+<p>比起“直接插⼊排序”，比较关键字的次数减少了，但是移动元素的次数没变，整体来看<strong>时间复杂度依然是$O(n^2)$</strong>  </p>
+<p><strong>3、算法稳定性：</strong> 稳定  </p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-排序（一）绪论</title>
+    <url>/2021/11/23/Sort/</url>
+    <content><![CDATA[<h2 id="数据结构-排序（一）绪论"><a href="#数据结构-排序（一）绪论" class="headerlink" title="数据结构-排序（一）绪论"></a>数据结构-排序（一）绪论</h2><blockquote>
+<p>排序（Sort） ，就是重新排列表中的元素，使表中的元素满⾜按关键字有序的过程。</p>
+<p><strong>输入：</strong> n个记录$R_1, R_2,…, R_n$，对应的关键字为$k_1, k_2,…, k_n。$</p>
+<p><strong>输出：</strong>输⼊序列的⼀个重排$R_1ʹ, R_2ʹ,…, R_nʹ，$使得有$k_1ʹ≤k_2ʹ≤…≤k_nʹ$（也可递减） </p>
+<p><strong>排序算法的评价指标：</strong>①时间复杂度；②空间复杂度   </p>
+<p><strong>算法的稳定性：</strong> 若待排序表中有两个元素$ R_i$ 和$ R_j$，其对应的关键字相同即$key_i= key_j$，且在排序前的前⾯$ R_i$ 和$ R_j$，若使⽤某⼀排序算法排序后， $ R_i$ 仍然在 $ R_j$的前面，则称这个排序算法是稳定的，否则称排序算法是不稳定的。</p>
+<p><strong>分类：</strong></p>
+<ul>
+<li>内部排序：数据都在内存里<strong>（关注如何使算法时、空复杂度更低 ）</strong></li>
+<li>外部排序：数据太多，无法全部存在内存里<strong>（还要关注如何使读/写磁盘次数更少）</strong></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>时间复杂度</th>
+<th></th>
+<th></th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>最好</td>
+<td>最差</td>
+<td>平均</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>直接插入排序</td>
+<td>$O(n)$</td>
+<td>$O(n^2)$</td>
+<td>$O(n^2)$</td>
+<td>$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>折半插入排序</td>
+<td>$O(n)$</td>
+<td>$O(n^2)$</td>
+<td>$O(n^2)$</td>
+<td>$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>不确定</td>
+<td>$O(n^2)$</td>
+<td>$O(n^{1.25}）～O（1.6n^{1.25}）$</td>
+<td>$O(1)$</td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>$O(n)$</td>
+<td>$O(n^2)$</td>
+<td>$O(n^2)$</td>
+<td>$O(1)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>$O(nlog_2n)$</td>
+<td>$O(n^2)$</td>
+<td><strong>$O(nlog_2n)$</strong></td>
+<td>$O(log_2n)$</td>
+<td>不稳定</td>
+</tr>
+<tr>
+<td>简单选择排序</td>
+<td>$O(n^2)$</td>
+<td>$O(n^2)$</td>
+<td>$O(n^2)$</td>
+<td>$O(1)$</td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>$O(nlog_2n)$</td>
+<td>$O(nlog_2n)$</td>
+<td><strong>$O(nlog_2n)$</strong></td>
+<td>$O(1)$</td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>$O(nlog_2n)$</td>
+<td>$O(nlog_2n)$</td>
+<td><strong>$O(nlog_2n)$</strong></td>
+<td>$O(n)$</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>$O(d(n+rd))$</td>
+<td>$O(d(n+rd))$</td>
+<td>$O(d(n+rd))$</td>
+<td>$O(n+rd)$</td>
+<td>稳定</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>时间空间复杂度网站推荐：<a href="https://www.bigocheatsheet.com/" target="_blank" rel="noopener">https://www.bigocheatsheet.com/</a></p>
+<p><img src="/2021/11/23/Sort/1.png" alt></p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构算法每日一练（十一）链表直接插入排序</title>
+    <url>/2021/11/21/DSP11/</url>
+    <content><![CDATA[<h1 id="数据结构算法每日一练（十一）链表直接插入排序"><a href="#数据结构算法每日一练（十一）链表直接插入排序" class="headerlink" title="数据结构算法每日一练（十一）链表直接插入排序"></a>数据结构算法每日一练（十一）链表直接插入排序</h1><p><strong>难度：</strong>⭐⭐⭐</p>
+<blockquote>
+<p><strong>题目：</strong> 在链式存储结构上设计直接插入排序算法</p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p><strong>（1）算法思想：</strong> 每次将⼀个待排序的记录按其关键字大小插入到前面已排好序的子序列中，直到全部记录插⼊完成。 时间复杂度$O(n^2)$</p>
+<p><strong>（2）实现步骤：</strong></p>
+<ul>
+<li>整个排序过程为n-1趟插入，</li>
+<li>先将序列中第1个记录看成是一个有序子序列，</li>
+<li>然后从第2个记录开始，逐个进行插入，直至整个序列有序。</li>
+</ul>
+<p><strong>（3）代码实现：</strong></p>
+<p>链表实现参考: <a href="https://leetcode-cn.com/problems/insertion-sort-list/solution/dui-lian-biao-jin-xing-cha-ru-pai-xu-by-leetcode-s/" target="_blank" rel="noopener">力扣</a></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//链式结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data; <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">next</span>;</span> <span class="comment">//指针域</span></span><br><span class="line">&#125;LNode, *LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入排序</span></span><br><span class="line"><span class="comment"> * @param head  链表头结点</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">LinkedList <span class="title">InsertSort</span><span class="params">(LinkedList head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head-&gt;next == <span class="literal">NULL</span>) <span class="comment">//若链表为空，则返回</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    LNode *sorted = head-&gt;next; <span class="comment">//表示已排序链表，指向链表第一个元素</span></span><br><span class="line">    LNode *curr = sorted-&gt;next; <span class="comment">//表示待排元素</span></span><br><span class="line">    <span class="keyword">while</span> (curr != <span class="literal">NULL</span>) &#123;</span><br><span class="line">         <span class="keyword">if</span> (sorted-&gt;data &lt;= curr-&gt;data) &#123; <span class="comment">//若已排最后一个元素元素小于待排元素，则不需要排序</span></span><br><span class="line">                sorted = sorted-&gt;next;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             LNode *prev = head; <span class="comment">//头结点</span></span><br><span class="line">             <span class="keyword">while</span> (prev-&gt;next-&gt;data &lt;= curr-&gt;data) &#123; <span class="comment">//从头结点开始遍历，找到小于待排元素的结点</span></span><br><span class="line">                 prev = prev-&gt;next;</span><br><span class="line">             &#125; <span class="comment">//while</span></span><br><span class="line">             sorted-&gt;next = curr-&gt;next; <span class="comment">//插入待排结点</span></span><br><span class="line">             curr-&gt;next = prev-&gt;next;</span><br><span class="line">             prev-&gt;next = curr;</span><br><span class="line">         &#125; <span class="comment">//else</span></span><br><span class="line">        curr = sorted-&gt;next;</span><br><span class="line">    &#125; <span class="comment">//while</span></span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125; <span class="comment">//void</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/21/DSP11/LInsert.png" alt></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//顺式结构</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入排序</span></span><br><span class="line"><span class="comment"> * @param arr  数组</span></span><br><span class="line"><span class="comment"> * @param n  数据个数</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt; arr[i - <span class="number">1</span>]) &#123; <span class="comment">//若关键字小于前驱</span></span><br><span class="line">            <span class="keyword">int</span> t = arr[i]; <span class="comment">//暂存关键字</span></span><br><span class="line">            <span class="keyword">int</span> j;</span><br><span class="line">            <span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; t ; j--) &#123; <span class="comment">//检查前面排序的元素</span></span><br><span class="line">                arr[j + <span class="number">1</span>] = arr[j]; <span class="comment">//所有大于t的元素完后挪位</span></span><br><span class="line">            &#125;</span><br><span class="line">            arr[j + <span class="number">1</span>] = t; <span class="comment">//复制到插入位置</span></span><br><span class="line">        &#125; <span class="comment">//if</span></span><br><span class="line">    &#125; <span class="comment">//for</span></span><br><span class="line">&#125; <span class="comment">//bool</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/21/DSP11/InsertSort.gif" alt></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数据结构算法每日一练</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-树和二叉树（七）哈夫曼树</title>
+    <url>/2021/11/21/Tree7/</url>
+    <content><![CDATA[<h1 id="数据结构-树和二叉树（七）哈夫曼树📑"><a href="#数据结构-树和二叉树（七）哈夫曼树📑" class="headerlink" title="数据结构-树和二叉树（七）哈夫曼树📑"></a>数据结构-树和二叉树（七）哈夫曼树📑</h1><p><img src="/2021/11/21/Tree7/1.png" alt></p>
+<h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><blockquote>
+<p><strong>结点的权：</strong>有某种现实含义的数值（如：表示结点的重要性等）<br><strong>结点的带权路径长度：</strong> 从树的根到该结点的路径长度（经过的边数）与该结点上权值的乘积<br><strong>树的带权路径长度：</strong> 树中所有叶结点的带权路径长度之和（WPL, Weighted Path Length）<br>$$<br>WPL = \sum_{i=1}^{100}w_{i}l_{i}<br>$$<br>其中，<strong>w<del>i</del></strong> 是第 i 个叶节点所带的全值，<strong>l<del>i</del></strong> 是该叶节点到根结点的路径长度。</p>
+<p><img src="/2021/11/21/Tree7/2.png" alt></p>
+</blockquote>
+<h2 id="2、构造"><a href="#2、构造" class="headerlink" title="2、构造"></a>2、构造</h2><blockquote>
+<p>给定n个权值分别为w<del>1</del>, w<del>2</del>,…, w<del>n</del>的结点，<strong>构造哈夫曼树的算法描述</strong>如下：</p>
+<ol>
+<li><p>将这n个结点分别作为n棵仅含一个结点的二叉树，构成森林F。</p>
+</li>
+<li><p>构造一个新结点，从F中选取两棵根结点权值最小的树作为新结点的左、右子树，</p>
+<p>并且将新结点的权值置为左、右子树上根结点的权值之和。</p>
+</li>
+<li><p>从F中删除刚才选出的两棵树，同时将新得到的树加入F中。</p>
+</li>
+<li><p>重复步骤2）和3），直至F中只剩下一棵树为止。  </p>
+</li>
+</ol>
+<p>==特点：==</p>
+<ol>
+<li>每个初始结点最终都成为叶结点，且权值越小的结点到根结点的路径长度越大</li>
+<li>叶节点为n，哈夫曼树的结点总数为2n - 1。</li>
+<li>哈夫曼树中<strong>不存在度为1</strong>的结点。</li>
+<li>哈夫曼树并不唯一，但WPL必然相同且为最优  </li>
+</ol>
+<p><img src="/2021/11/21/Tree7/3.png" alt></p>
+</blockquote>
+<h2 id="3、哈夫曼编码"><a href="#3、哈夫曼编码" class="headerlink" title="3、哈夫曼编码"></a>3、哈夫曼编码</h2><blockquote>
+<p><strong>固定长度编码</strong>——每个字符用相等长度的二进制位表示  </p>
+<p><strong>可变长度编码</strong>——允许对不同字符用不等长的二进制位表示  </p>
+<p>若没有一个编码是另一个编码的前缀，则称这样的编码为前缀编码  </p>
+<p>有哈夫曼树得到哈夫曼编码——字符集中的每个字符作为一个叶子结点，各个字符出现的频度作为结点的权值，根据之前介绍的方法构造哈夫曼树  </p>
+<p>🌰🌱（栗子）</p>
+<p>某系统在通讯时，只出现C，A，S，T，B五种字符，其出现频率依次为2，4，2，3，3，试设计Huffman编码。</p>
+<p>1、首先根据字符出现频率构造最优哈夫曼树，如图；</p>
+<p><img src="/2021/11/21/Tree7/4.png" alt></p>
+<p>2、根据哈夫曼树，得出哈夫曼编码；</p>
+<p>T　 00</p>
+<p>B 　01</p>
+<p>A 　10</p>
+<p>C 　110</p>
+<p>S　 111</p>
+<p>3、计算WPL</p>
+<p>WPL = 2 * (3 + 3 + 4) + 3 * (2 + 2) = 32</p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构-树和二叉树（六）二叉平衡树</title>
+    <url>/2021/11/20/Tree6/</url>
+    <content><![CDATA[<h1 id="数据结构-树和二叉树（六）二叉平衡树-⚖"><a href="#数据结构-树和二叉树（六）二叉平衡树-⚖" class="headerlink" title="数据结构-树和二叉树（六）二叉平衡树 ⚖"></a>数据结构-树和二叉树（六）二叉平衡树 ⚖</h1><p><img src="/2021/11/20/Tree6/6.png" alt></p>
+<h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><blockquote>
+<p><strong>平衡二叉树</strong>（Balanced Binary Tree）， 简称<strong>平衡树（AVL树）</strong> ——树上任一结点的左子树和右子树的高度之差不超过1。<br><strong>结点的平衡因子</strong> = 左子树高 - 右子树高。  </p>
+</blockquote>
+<h2 id="2、AVL树的插入"><a href="#2、AVL树的插入" class="headerlink" title="2、AVL树的插入"></a>2、AVL树的插入</h2><h3 id="（1）LL平衡旋转"><a href="#（1）LL平衡旋转" class="headerlink" title="（1）LL平衡旋转"></a>（1）LL平衡旋转</h3><blockquote>
+<p><strong>LL平衡旋转（ 右单旋转）</strong>。由于在结点A的左孩子（ L）的左子树（ L）上插入了新结点， A的平衡因子由1增至2，导致以A为根的子树失去平衡，需要<strong>一次向右的旋转操作</strong>。将A的左孩子B向右上旋转代替A成为根结点，将A结点向右下旋转成为B的右子树的根结点，而B的原右子树则作为A结点的左子树。  </p>
+<p><img src="/2021/11/20/Tree6/1.png" alt></p>
+</blockquote>
+<h3 id="（2）RR平衡旋转"><a href="#（2）RR平衡旋转" class="headerlink" title="（2）RR平衡旋转"></a>（2）RR平衡旋转</h3><blockquote>
+<p><strong>RR平衡旋转（ 左单旋转）</strong>。由于在结点A的右孩子（ R）的右子树（ R）上插入了新结点， A的平衡因子由-1减至-2，导致以A为根的子树失去平衡，需要<strong>一次向左的旋转操作</strong>。将A的右孩子B向左上旋转代替A成为根结点，将A结点向左下旋转成为B的左子树的根结点，而B的原左子树则作为A结点的右子树。</p>
+<p><img src="/2021/11/20/Tree6/2.png" alt></p>
+</blockquote>
+<h3 id="（3）LR平衡旋转"><a href="#（3）LR平衡旋转" class="headerlink" title="（3）LR平衡旋转"></a>（3）LR平衡旋转</h3><blockquote>
+<p><strong>LR平衡旋转（先左后右双旋转）</strong>。由于在A的左孩子（L）的右子树（R）上插入新结点， A的平衡因子由1增至2，导致以A为根的子树失去平衡，需要进行<strong>两次旋转操作，先左旋转后右旋转</strong>。先将A结点的左孩子B的右子树的根结点C向左上旋转提升到B结点的位置，然后再把该C结点向右上旋转提升到A结点的位置。</p>
+<p><img src="/2021/11/20/Tree6/3.png" alt></p>
+</blockquote>
+<h3 id="（4）RL平衡旋转"><a href="#（4）RL平衡旋转" class="headerlink" title="（4）RL平衡旋转"></a>（4）RL平衡旋转</h3><blockquote>
+<p><strong>RL平衡旋转（先右后左双旋转）</strong>。由于在A的右孩子（R）的左子树（L）上插入新结点， A的平衡因子由-1减至-2，导致以A为根的子树失去平衡，需要进行<strong>两次旋转操作，先右旋转后左旋转</strong>。先将A结点的右孩子B的左子树的根结点C向右上旋转提升到B结点的位置，然后再把该C结点向左上旋转提升到A结点的位置。</p>
+<p><img src="/2021/11/20/Tree6/4.png" alt></p>
+</blockquote>
+<h2 id="3、查找效率分析"><a href="#3、查找效率分析" class="headerlink" title="3、查找效率分析"></a>3、查找效率分析</h2><blockquote>
+<p>平衡二叉树—树上任一结点的左子树和右子树的高度之差不超过1  </p>
+<p>若树高为h，则<strong>最坏情况下</strong>，查找一个关键字最多需要对比 h 次，即<strong>查找操作的时间复杂度不可能超过 $O(h)$</strong>  </p>
+<p>假设以 n<del>h</del> 表示<strong>深度为 h</strong> 的平衡树中含有的最少结点数。</p>
+<p>则有$n_0 = 0, n_1 = 1, n_2 = 2，$ 并且有$n_h = n_{h-1} + n_{h-2} + 1  $</p>
+<p>可以证明含有n个结点的平衡二叉树的<strong>最大深度为$O(log_2n)$</strong> ， 平衡二叉树的<strong>平均查找长度为$O(log_2n)$</strong>  </p>
+</blockquote>
+<h2 id="4、例题"><a href="#4、例题" class="headerlink" title="4、例题"></a>4、例题</h2><blockquote>
+<p><strong>题目：</strong> 按顺序插入【21，30，50，26，60，66，24】构建平衡二叉树，请画出插入并调整为平衡二叉树的过程。</p>
+<p><strong>过程如下：</strong></p>
+<p><img src="/2021/11/20/Tree6/5.jpg" alt></p>
+</blockquote>]]></content>
+      <categories>
+        <category>C/C++数据结构</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构算法每日一练（十）年龄排序</title>
+    <url>/2021/11/10/DSP10/</url>
+    <content><![CDATA[<h1 id="数据结构算法每日一练（十）年龄排序"><a href="#数据结构算法每日一练（十）年龄排序" class="headerlink" title="数据结构算法每日一练（十）年龄排序"></a>数据结构算法每日一练（十）年龄排序</h1><p><strong>难度：</strong> ⭐⭐</p>
+<blockquote>
+<p><strong>题目：</strong>一个公司有几万名在职员工，请设计一个排序算法，对公司所有员工的年龄进行排序，要求时间效率$O(n)$。可以使用辅助内存，但使用辅助空间不得超过$O(1)$</p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p><strong>（1）基本思想：</strong>在职员工的年龄必然小于100岁，可以建立长度101的哈希表，用来表示每个年龄的员工个数，利用哈希表可以完成$O(n)$时间复杂度的排序。该思想类似于桶排序。<a href="https://blog.csdn.net/weixin_43533538/article/details/104077088" target="_blank" rel="noopener">桶排序介绍</a></p>
+<p><strong>（2）实现步骤：</strong></p>
+<p>① 建立哈希表，遍历整个年龄数组arr，遍历一个年龄，对应哈希表的值加1，时间复杂度$O(n)$</p>
+<p>② 遍历整个哈希表，重排所有元素，直到每个哈希表的值为0，时间复杂度$O(n)$</p>
+<p><strong>（3）代码实现：</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Hashsort</span><span class="params">(<span class="keyword">int</span> &amp;arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result[<span class="number">101</span>] = &#123;<span class="number">0</span>&#125;; </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">101</span>; i++) <span class="comment">//建立哈希表</span></span><br><span class="line">        ++result[arr[i]];</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>; <span class="comment">//年龄数组arr下标</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">101</span>; i++) &#123; <span class="comment">//重排</span></span><br><span class="line">        <span class="keyword">while</span>(result[i] != <span class="number">0</span>) &#123; <span class="comment">//当哈希值不为0时继续</span></span><br><span class="line">            arr[index] = i; <span class="comment">//重新给年龄数组arr从头到尾赋值</span></span><br><span class="line">            index++;</span><br><span class="line">            --result[i]; <span class="comment">//哈希值减一</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数据结构算法每日一练</category>
+      </categories>
+      <tags>
+        <tag>C/C++数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构-树和二叉树（五）二叉排序树</title>
     <url>/2021/10/24/Tree5/</url>
     <content><![CDATA[<h1 id="数据结构-树和二叉树（五）二叉排序树"><a href="#数据结构-树和二叉树（五）二叉排序树" class="headerlink" title="数据结构-树和二叉树（五）二叉排序树"></a>数据结构-树和二叉树（五）二叉排序树</h1><p><img src="/2021/10/24/Tree5/1.png" alt></p>
 <h2 id="二叉排序树🚉"><a href="#二叉排序树🚉" class="headerlink" title="二叉排序树🚉"></a>二叉排序树🚉</h2><blockquote>
-<p>==二叉排序树==，又称==二叉查找树==（ BST， Binary Search Tree）<br>一棵二叉树或者是空二叉树，或者是具有如下<strong>性质的二叉树：</strong></p>
+<p>二叉排序树，又称二叉查找树（ BST， Binary Search Tree）<br>一棵二叉树或者是空二叉树，或者是具有如下<strong>性质的二叉树：</strong></p>
 <ol>
 <li><p>左子树上所有结点的关键字均小于根结点的关键字；</p>
 </li>
@@ -32,8 +471,7 @@
 <p><strong>最坏情况：</strong>每个结点只有一个分支，树高 h = 结点数n。 平均查找长度 = O(n)   </p>
 <p><img src="/2021/10/24/Tree5/2.png" alt></p>
 <p><img src="/2021/10/24/Tree5/3.png" alt></p>
-</blockquote>
-]]></content>
+</blockquote>]]></content>
       <categories>
         <category>C/C++数据结构</category>
       </categories>
@@ -46,7 +484,7 @@
     <url>/2021/10/01/Tree4/</url>
     <content><![CDATA[<h1 id="1-数据结构-树和二叉树（四）树和森林"><a href="#1-数据结构-树和二叉树（四）树和森林" class="headerlink" title="1 数据结构-树和二叉树（四）树和森林"></a>1 数据结构-树和二叉树（四）树和森林</h1><p><img src="/2021/10/01/Tree4/1.png" alt></p>
 <h2 id="1-1-树的逻辑结构"><a href="#1-1-树的逻辑结构" class="headerlink" title="1.1 树的逻辑结构"></a>1.1 树的逻辑结构</h2><blockquote>
-<p>==树==是n（n≥0）个结点的有限集合， n = 0时，称为<strong>空树</strong>，这是一种特殊情况。</p>
+<p>树是n（n≥0）个结点的有限集合， n = 0时，称为<strong>空树</strong>，这是一种特殊情况。</p>
 <p>在任意一棵<strong>非空树</strong>中应满足：</p>
 <p>1、有且仅有一个特定的称为根的结点。</p>
 <p>2、当n &gt; 1时，其余结点可分为m（m &gt; 0）个互不相交的有限集合T1, T2,…, Tm，其中每个集合本身又是一棵树，并且称为根结点的子树。  </p>
@@ -74,40 +512,39 @@
 <p><img src="/2021/10/01/Tree4/6.png" alt></p>
 </blockquote>
 <h2 id="1-6-树和森林的遍历"><a href="#1-6-树和森林的遍历" class="headerlink" title="1.6 树和森林的遍历"></a>1.6 树和森林的遍历</h2><h3 id="1、树的遍历"><a href="#1、树的遍历" class="headerlink" title="1、树的遍历"></a>1、树的遍历</h3><h4 id="（1）先根遍历"><a href="#（1）先根遍历" class="headerlink" title="（1）先根遍历"></a>（1）先根遍历</h4><blockquote>
-<p> ==先根遍历==。若树非空，先访问根结点，再依次对每棵子树进行先根遍历。  ==深度优先遍历==  </p>
+<p> 先根遍历。若树非空，先访问根结点，再依次对每棵子树进行先根遍历。  深度优先遍历  </p>
 <p> 树的先根遍历序列与这棵树相应二叉树的先序序列相同    </p>
 </blockquote>
 <h4 id="（2）后根遍历"><a href="#（2）后根遍历" class="headerlink" title="（2）后根遍历"></a>（2）后根遍历</h4><blockquote>
-<p>==后根遍历==。若树非空，先依次对每棵子树进行后根遍历，最后再访问根结点。  ==深度优先遍历==  </p>
+<p>后根遍历。若树非空，先依次对每棵子树进行后根遍历，最后再访问根结点。  深度优先遍历  </p>
 <p>树的后根遍历序列与这棵树相应二叉树的中序序列相同。  </p>
 </blockquote>
 <h4 id="（3）层次遍历"><a href="#（3）层次遍历" class="headerlink" title="（3）层次遍历"></a>（3）层次遍历</h4><blockquote>
-<p>==层次遍历==（用队列实现）  ==广度优先遍历==  </p>
+<p>层次遍历（用队列实现）  广度优先遍历 </p>
 <p>① 若树非空， 则根节点入队</p>
 <p>② 若队列非空，队头元素出队并访问，同时将该元素的孩子依次入队</p>
 <p>③ 重复②直到队列为空  </p>
 </blockquote>
 <h3 id="2、森林的遍历"><a href="#2、森林的遍历" class="headerlink" title="2、森林的遍历"></a>2、森林的遍历</h3><h4 id="（1）先序遍历"><a href="#（1）先序遍历" class="headerlink" title="（1）先序遍历"></a>（1）先序遍历</h4><blockquote>
-<p>==先序遍历森林==。</p>
+<p>先序遍历森林。</p>
 <p>若森林为非空，则按如下规则进行遍历：</p>
 <ol>
 <li>访问森林中第一棵树的根结点。</li>
 <li>先序遍历第一棵树中根结点的子树森林。</li>
 <li>先序遍历除去第一棵树之后剩余的树构成的森林</li>
 </ol>
-<p>效果等同于依次对==各个树进行先根遍历==  ，等同于依次对==二叉树的先序遍历==  </p>
+<p>效果等同于依次对各个树进行先根遍历  ，等同于依次对二叉树的先序遍历  </p>
 </blockquote>
 <h4 id="（2）中序遍历"><a href="#（2）中序遍历" class="headerlink" title="（2）中序遍历"></a>（2）中序遍历</h4><blockquote>
-<p>==中序遍历森林==。</p>
+<p>中序遍历森林。</p>
 <p>若森林为非空，则按如下规则进行遍历：</p>
 <ol>
 <li>中序遍历森林中第一棵树的根结点的子树森林。</li>
 <li>访问第一棵树的根结点。</li>
 <li>中序遍历除去第一棵树之后剩余的树构成的森林。  </li>
 </ol>
-<p>效果等同于依次对==各个树进行后根遍历==  ，等同于依次对==二叉树的中序遍历==  </p>
-</blockquote>
-]]></content>
+<p>效果等同于依次对各个树进行后根遍历  ，等同于依次对二叉树的中序遍历  </p>
+</blockquote>]]></content>
       <categories>
         <category>C/C++数据结构</category>
       </categories>
