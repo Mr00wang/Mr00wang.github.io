@@ -1,6 +1,694 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于SpringBoot和React的在线考试平台</title>
+    <url>/2022/03/16/ExamOnline/</url>
+    <content><![CDATA[<h1 id="1-系统背景和意义"><a href="#1-系统背景和意义" class="headerlink" title="1  系统背景和意义"></a>1  系统背景和意义</h1><h2 id="1-1-系统背景"><a href="#1-1-系统背景" class="headerlink" title="1.1  系统背景"></a>1.1  系统背景</h2><p>近年来随着计算机技术的飞跃发展，教学方式、考核方式也逐渐多样化，我们不再局限于传统的纸质考试。在线考试给人们带来了更大的便捷和更高效率。在新冠肺炎疫情影响下，学校和企业都受到一些影响，学生无法在教室进行试卷考试，线上教学迅速普及。目前，我国教育领域的人数巨大，且越来越多的学生面临着极大的考试压力和竞争压力，传统教学的模式已经无法满足学生日益增长的学习需求。因此，我们考虑开发在线考试系统。</p>
+<h2 id="1-2-系统意义"><a href="#1-2-系统意义" class="headerlink" title="1.2  系统意义"></a>1.2  系统意义</h2><p>随着国家和社会水平的发展和提高，教育的重要性深入人心，教育的发展不仅可以改变个人的生活，还可以促进国家和社会的发展进步，逐步缩小教育资源差距，让教育资源匮乏的地区可以通过线上的方式享受到教育资源。传统的教学模式以老师为核心、以课堂教学为主要形式开展教学活动。老师传授知识并布置作业，学生接受知识并完成作业，在这样的教学模式中,老师与学生之间信息反馈的速度较慢，老师无法快速的了解每个学生的学习情况而对症下药。互联网与教育模式的结合，则大大了弥补了传统的教学流程和学习方式上的缺陷，使学习不再局限于课堂和书本，降低了每个人的学习成本，同时也减少了学生、老师之间信息反馈的时间成本。在线考试展现出了极大的优越性，随时随地，不使用纸张，不需人工整理，极大的方便了教师和考生。本产品的面向的对象为学校和企业，是一个高效、便捷、简单的在线考试平台，适用于各种考试、练习、培训、竞赛、笔试及作业，实现了考试考核，考试培训，人员管理，企业笔试等功能，对提高学习效率、促进公司发展、促进教育现代化具有重要的意义。</p>
+<h1 id="2-系统分析"><a href="#2-系统分析" class="headerlink" title="2  系统分析"></a>2  系统分析</h1><p>对于任何一个系统，最终都是要由用户来使用的，因此从用户的角度出发，能够获得对系统最直接的认识，在最大程度上满足用户的需求，用户对系统也可能有额外的约束和限定。本章对该在线学习平台进行需求分析、性能分析和可行性分析。在需求分析中，将需求分为功能性需求、非功能性需求和系统交互设计需求。通过需求分析，满足用户使用平台进行学习的目标。</p>
+<h2 id="2-1-功能性需求"><a href="#2-1-功能性需求" class="headerlink" title="2.1  功能性需求"></a>2.1  功能性需求</h2><p>功能性需求是指系统为满足用户的某种需要预期提供的功能和服务。本文通过用例，分角色对系统的功能性需求进行有效的分析汇总，从而获取最准确的用户功能性需求，用来指导后续的设计及开发。</p>
+<h3 id="2-1-1-教师功能"><a href="#2-1-1-教师功能" class="headerlink" title="2.1.1  教师功能"></a>2.1.1  教师功能</h3><p><strong>教师功能为出卷人，有五大基本功能</strong>，用例图如图2.1。</p>
+<p><img src="/2022/03/16/ExamOnline/1.png" alt></p>
+<blockquote>
+<p><strong>图2-1 教师用例图</strong></p>
+</blockquote>
+<p><strong>（1）    考试管理：</strong>教师端的试卷管理，教师端可以查看考试和发布考试。<br><strong>（2）    题库管理：</strong>试题的管理。<br><strong>（3）    试卷管理：</strong>试卷的管理。<br><strong>（4）    成绩管理：</strong>成绩的查看。<br><strong>（5）    群组管理：</strong>教师端可以对考生和群组进行管理。</p>
+<h3 id="2-1-2-监考人员功能"><a href="#2-1-2-监考人员功能" class="headerlink" title="2.1.2  监考人员功能"></a>2.1.2  监考人员功能</h3><p>监考人可以在线监督考试<strong>（未实现）</strong>。用例图如图2-2所示。</p>
+<p><img src="/2022/03/16/ExamOnline/2.png" alt></p>
+<blockquote>
+<p><strong>图2-2 监考人员用例图</strong></p>
+</blockquote>
+<p><strong>（1）    监考管理：</strong>监考人可以在线监督考试，可以查看学生答题情况和强制交卷。</p>
+<h3 id="2-1-3-考生功能"><a href="#2-1-3-考生功能" class="headerlink" title="2.1.3  考生功能"></a>2.1.3  考生功能</h3><p><strong>考生有四大功能模块</strong>，用例图如图2-3所示。<br><img src="/2022/03/16/ExamOnline/3.png" alt></p>
+<blockquote>
+<p><strong>图2-3 考生用例图</strong></p>
+</blockquote>
+<p><strong>（1）    我的考试：</strong>考生端的考试管理。<br><strong>（2）    我的成绩：</strong>考生可以查看考试。<br><strong>（3）    我的群组：</strong>考生可以申请群组。<br><strong>（4）    登录注册：</strong>考生可以查看教师端发布的通知。</p>
+<h3 id="2-1-4-管理员功能"><a href="#2-1-4-管理员功能" class="headerlink" title="2.1.4  管理员功能"></a>2.1.4  管理员功能</h3><p>管理员功能<strong>（未实现）</strong>如图2-4所示。</p>
+<p><img src="/2022/03/16/ExamOnline/4.png" alt></p>
+<blockquote>
+<p><strong>图2-4 管理员用例图</strong></p>
+</blockquote>
+<p><strong>（1）审核试题：</strong>管理员审核试题。<br><strong>（2）审核试卷：</strong>管理员审核试卷。<br><strong>（3）管理考生：</strong>管理员对考生进行管理。<br><strong>（4）管理出卷人：</strong>管理员对出卷人进行管理。</p>
+<h2 id="2-2-非功能性需求"><a href="#2-2-非功能性需求" class="headerlink" title="2.2  非功能性需求"></a>2.2  非功能性需求</h2><p>系统的非功能性需求是指软件产品为满足用户业务需求而必须具有的除功能性需求外的特性，通常包括对系统性能、可靠性、安全性、可维护性、可扩展性等方面的需求。<br>（1）保证用户数据和试题的安全，对重要的数据进行加密。<br>（2）系统具备健壮性、稳定性和好的移植性。<br>（3）可维护性的好坏直接影响到系统上线后的管理与维护。线上考试平台作为一个功能复杂的系统，涉及的模块较多，同时各模块之间的交互较多，因此在系统开发过程中应尽量实现高内聚、低耦合，以便系统上线后的管理与维护。<br>（4）实用性是用户最看重的特性之一。在线考试系统应最大程度满足用户的需求，对于考试所需的各项功能提供完善的实现与支持。</p>
+<h2 id="2-3-系统交互式需求"><a href="#2-3-系统交互式需求" class="headerlink" title="2.3  系统交互式需求"></a>2.3  系统交互式需求</h2><p>系统的交互式需求是非常重要的，设计小组必须通过丰富的细节来确定和记录现有的工作流程，然后将信息整合组织起来以方便将其文档化。不同类型的产品往往在需求方面也存在较大差异，我们需要都需求提出特殊的要求。每个产品使用的用户是不同，每个用户有不同的能力和弱点，有着不同背景和文化，也需要讨论用户特性对产品设计中的一些特殊需求。<br>（1）系统要提供友好的用户界面。<br>（2）界面要为用户提供方便的导航。<br>（3）系统对于用户的误操作给出相应的提示。<br>（4）系统必须具备一定的防作弊能力，以防止部分考生在考试中通过非法操作，获取试题及答案。<br>（5）对考生考试时发生的故障进行处理。考生在考试过程中如果发生机器断电、意外退出、系统无响应等情况，需要对考生的考试现场进行保存，以便考试恢复后，能够恢复到故障前的界面情景，节省考生的考试时间。</p>
+<h2 id="2-4-性能分析"><a href="#2-4-性能分析" class="headerlink" title="2.4  性能分析"></a>2.4  性能分析</h2><p>（1）时间特性：普通操作在3秒内得到响应，计算量最大的任务在1分钟内完成。<br>（2）易用性：系统用MS Internet Explorer实现用户界面，大量的图形元素直观的反映了系统功能，便于记忆。<br>（3）稳定：系统的稳定性非常重要，它将直接影响到各类用户的使用质量，所以系统必须保证的稳定运行。<br>（4）数据精确度：所有有关金额的数据域要求精确到小数点后2位。<br>（5）数据库容量要求：数据库容量要求能支持多企业、多用户访问。</p>
+<h2 id="2-5-可行性分析"><a href="#2-5-可行性分析" class="headerlink" title="2.5  可行性分析"></a>2.5  可行性分析</h2><h3 id="2-5-1-技术可行性"><a href="#2-5-1-技术可行性" class="headerlink" title="2.5.1  技术可行性"></a>2.5.1  技术可行性</h3><p>在当前的限制条件下，该系统的功能目标可以达到；利用现有的SpringBoot和React等技术，该系统的功能可以实现；对开发人员的数量和质量满足程序开发的需要；在规定的期限内，本系统的开发可以完成。</p>
+<h3 id="2-5-2-社会可行性"><a href="#2-5-2-社会可行性" class="headerlink" title="2.5.2  社会可行性"></a>2.5.2  社会可行性</h3><p>本项目不涉及在社会上或政治上引起侵权、破坏或其他责任问题。设计本项目的一切活动都在国家法律允许范围以内。系统开发和运行与国家的政策法规不存在任何冲突和抵触之处。</p>
+<h3 id="2-5-3-经济可行性"><a href="#2-5-3-经济可行性" class="headerlink" title="2.5.3  经济可行性"></a>2.5.3  经济可行性</h3><p>本项目为自主开发项目，只需相应的开发设备、开发环境和服务器域名即可，无需过多支出，所以经济方面可行。</p>
+<h3 id="2-5-4-安全可行性"><a href="#2-5-4-安全可行性" class="headerlink" title="2.5.4  安全可行性"></a>2.5.4  安全可行性</h3><p>该系统使用虚拟账号进行登录，不涉及用户真实身份信息。数据方面进行加密处理，且系统设有角色权限。系统的安全无疑是确保系统正常运行的首要保障，系统的设计将从访问控制、数据安全方面进行考虑。<br>（1）权限管理：通过设置角色和用户权限可以对用户访问控制。<br>（2）运行维护管理：进行系统数据库的备份，使系统数据不会因意外事故（如突然停电）而造成破坏，从而确保数据库内容的安全可靠性；安全性方面可行。<br>（3）数据保护：前后端接口数据交互进行数据加密。<br>（4）鉴权身份认证技术：接口访问时需要提交Token进行验证，防止恶意访问。</p>
+<h2 id="3-1-系统整体功能结构"><a href="#3-1-系统整体功能结构" class="headerlink" title="3.1  系统整体功能结构"></a>3.1  系统整体功能结构</h2><p>本系统的整体功能结构图如图3-1所示。用户通过登陆界面进行登陆分别进入教师端和考试端，然后在后台管理界面进行相应功能的操作。</p>
+<p><img src="/2022/03/16/ExamOnline/5.png" alt></p>
+<blockquote>
+<p><strong>图3-1 系统整体功能结构</strong></p>
+</blockquote>
+<h2 id="3-2-数据库设计"><a href="#3-2-数据库设计" class="headerlink" title="3.2  数据库设计"></a>3.2  数据库设计</h2><p>本系统采用MySQL数据库，使用Navicat可视化工具进行数据编辑。根据需求，数据库一共设计了15个表。</p>
+<h3 id="3-2-1-逻辑结构设计"><a href="#3-2-1-逻辑结构设计" class="headerlink" title="3.2.1  逻辑结构设计"></a>3.2.1  逻辑结构设计</h3><p><strong>（1）用户表</strong><br>属性：用户ID、用户名、昵称、密码、邮箱、盐值、注册时间、角色。<br><strong>（2）群组信息表</strong><br>属性：群组ID、组名、群组成员、成员数量、创建时间。<br><strong>（3）进入群组申请表</strong><br>属性：群组ID、用户ID、用户昵称、用户描述、申请时间、申请状态。<br><strong>（4）用户群组关联表</strong><br>属性：群组ID、用户ID。<br><strong>（5）试题信息表</strong><br>属性：题目ID、题目题型、题目标签、题目问题、题目选项集合、题目答案集合。<br><strong>（6）试题选项表</strong><br>属性：选项ID、试题ID、选项序号、选项内容。<br><strong>（7）试题答案表</strong><br>属性：试题ID、选项序号、选项内容。<br><strong>（8）试卷表</strong><br>属性：试卷ID、试卷名称、试卷出卷人ID、试卷创建日期、试卷总分、试卷类型、试卷题目集合。<br><strong>（9）试卷题目表</strong><br>属性：试卷ID、试题ID、试题分数、试卷题目ID。<br><strong>（10）考试表</strong><br>属性：考试ID、试卷ID、考试创建者ID、考试名称、考试创建日期、考试权限、进入考试口令、考试状态、考试开始时间、考试结束时间、考试时长、考试参加群组。<br><strong>（11）允许考试群组信息表</strong><br>属性：考试ID、允许考试的群组ID。<br><strong>（12）考试完成信息表</strong><br>属性：考试ID、考生ID、考试试卷ID。<br><strong>（13）考生完成考试信息表</strong><br>属性：完成考试ID、考试试卷ID、考生ID、考生备注姓名、考生分数、考试总分、考试创建时间、考试创建者ID、考生做完的日期、考试状态、考生做完题目集合。<br><strong>（14）考生完成考试题目表</strong><br>属性：完成题目ID、完成考试ID、考试试题ID、考生答案集合、答案正确性。<br><strong>（15）考生完成考试题目答案表</strong><br>属性：完成题目ID、选项序号、题目答案、答案正确性。</p>
+<h3 id="3-2-2-表结构设计"><a href="#3-2-2-表结构设计" class="headerlink" title="3.2.2  表结构设计"></a>3.2.2  表结构设计</h3><p>部分表结构如下：</p>
+<blockquote>
+<p><strong>表3-1 用户表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>是否为空</th>
+<th>字段约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>用户ID</td>
+<td>bigint</td>
+<td>否</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>password</td>
+<td>密码</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>用户名</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>网名</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>邮箱</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>salt</td>
+<td>盐值</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>register_time</td>
+<td>注册时间</td>
+<td>datatime</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>role</td>
+<td>角色</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-2 群组信息表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>是否为空</th>
+<th>字段约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>群组ID</td>
+<td>bigint</td>
+<td>否</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>group_name</td>
+<td>群组名称</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>group_master</td>
+<td>群组成员</td>
+<td>bigint</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>创建时间</td>
+<td>data</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>群组数量</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-3 试题表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>是否为空</th>
+<th>字段约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>试题ID</td>
+<td>bigint</td>
+<td>否</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>type</td>
+<td>试题类型</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>question</td>
+<td>试题问题</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>tag</td>
+<td>试题分类</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-4 试卷表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>是否为空</th>
+<th>字段约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>试卷ID</td>
+<td>bigint</td>
+<td>否</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>试卷名称</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>create_user_id</td>
+<td>创建试卷用户ID</td>
+<td>bigint</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>create_data</td>
+<td>创建日期</td>
+<td>date</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>total_score</td>
+<td>试卷总分</td>
+<td>decimal</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>sort</td>
+<td>试卷分类</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-5 考试表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段说明</th>
+<th>字段类型</th>
+<th>是否为空</th>
+<th>字段约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>考试ID</td>
+<td>bigint</td>
+<td>否</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>test_paper_id</td>
+<td>试卷ID</td>
+<td>bigint</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>create_user_id</td>
+<td>创建考试用户ID</td>
+<td>bigint</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>activity_name</td>
+<td>考试名称</td>
+<td>varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>create_data</td>
+<td>创建日期</td>
+<td>data</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>开始时间</td>
+<td>datatime</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>结束时间</td>
+<td>datatime</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>exam_duration</td>
+<td>考试时间</td>
+<td>int</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>is_private</td>
+<td>是否私有</td>
+<td>bit</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>private_code</td>
+<td>密码</td>
+<td>Varchar</td>
+<td>否</td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td>考试状态</td>
+<td>tinyint</td>
+<td>否</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>数据库EER图如图3-2所示</p>
+<p><img src="/2022/03/16/ExamOnline/6.png" alt></p>
+<blockquote>
+<p><strong>图3-2 数据库EER图</strong></p>
+</blockquote>
+<h2 id="3-3-技术设计"><a href="#3-3-技术设计" class="headerlink" title="3.3  技术设计"></a>3.3  技术设计</h2><p>本项目为<strong>SpringBoot和React的分布式，前后端分离项目</strong>。SpringBoot方便对外输出各种形式的服务，有非常简洁的安全策略集成，支持关系数据库和非关系数据库，自动管理依赖。React作为如今前端框架主流技术之一，使用虚拟DOM的概念，性能好，速度快，解决了跨浏览器问题，代码组件化，模块化，重用代码更容易，可维护性高。</p>
+<h3 id="3-3-1-后端技术"><a href="#3-3-1-后端技术" class="headerlink" title="3.3.1  后端技术"></a>3.3.1  后端技术</h3><p>后端采用SpringBoot、Spring MVC、mybatis、redis、MD5、身份鉴权等技术。SpringBoot是基于Spring的框架，在继承Spring优良特性的同时改善了Spring存在的弊端。<strong>SpringBoot有以下优点</strong>：<br>（1）    保留了Spring框架的核心——IOC和AOP的思想，代码便于升级维护。<br>（2）    简化了Spring的繁琐配置，便于将开发集中于业务核心，快速创建独立运行的Spring项目；内部嵌入了Servlet，不再需要单独安装容器，可直接部署运行项目<br>（3）    支持优雅搭建Restful风格的微服务架构<br>（4）    兼容性强，整合主流开发框架无需配置。</p>
+<h3 id="3-3-2-前端技术"><a href="#3-3-2-前端技术" class="headerlink" title="3.3.2  前端技术"></a>3.3.2  前端技术</h3><p>前端采用React.js、React-route、axios、ES6、less、babel、webpack等技术。React.js是一个用于构建用户界面的 JavaScript 库。<strong>React有以下优点：</strong><br>（1）    提升开发效率、代码可维护性和可阅读性增强。<br>（2）    虚拟DOM，高效速度快，跨浏览器兼容–React之所以速度快，是因为其独特的特征——虚拟DOM（Document Object Model）。<br>（3）    组件是react的核心，一个完整的react应用是由若干个组件搭建起来的，每个组件有自己的数据和方法，组件具体如何划分，需要根据不同的项目来确定。组件的特征是可复用，可维护性高。<br>（4）    React只是MVC中的View层，自己无法构建大型的应用，需要与已有的框架和库来配合，如：Flux（前端架构） 、Redux（状态管理）、Axios/Fetch（异步请求）等。</p>
+<h2 id="3-4-界面设计"><a href="#3-4-界面设计" class="headerlink" title="3.4  界面设计"></a>3.4  界面设计</h2><p><strong>前端采用React框架搭建界面，采用蚂蚁金服开发的一款设计体系Ant Design</strong>。让设计者和开发者有更好的体验。<br>本项目一共设有六个界面，<strong>一是产品官方首页</strong>，用户可通过首页对本产品进行一个简单了解，如图3-3所示；<strong>二是注册界面</strong>，如图3-4所示；<strong>三是登录界面</strong>，如图3-5所示；<strong>四是教师端单界面</strong>，教师端采取单页面应用程序，对用户有良好的交互体验，页面显示流畅，采用响应式布局，结构更加清晰，如图3-6所示；<strong>五是考生端单界面</strong>，如图3-7所示；<strong>六是考试界面</strong>，考试界面设计简洁大方，页面更加美观，简洁大方，如图3-8所示。</p>
+<p><img src="/2022/03/16/ExamOnline/7.png" alt></p>
+<blockquote>
+<p><strong>图3-3 产品首页图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/8.png" alt></p>
+<blockquote>
+<p><strong>图3-4 注册图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/9.png" alt></p>
+<blockquote>
+<p><strong>图3-5 登录图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/10.png" alt></p>
+<blockquote>
+<p><strong>图3-6 教师端后台管理图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/11.png" alt></p>
+<blockquote>
+<p><strong>图3-7 考生端图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/12.png" alt></p>
+<blockquote>
+<p><strong>图3-8 考试页面图</strong></p>
+</blockquote>
+<h2 id="3-5-接口设计"><a href="#3-5-接口设计" class="headerlink" title="3.5  接口设计"></a>3.5  接口设计</h2><p>​    线上考试平台一共实现了用户、群组、试题、试卷和考试等五套的restful风格的CRUD接口供前端调用。当用户登录后将会获取到该用户的Token作为身份权限，当用户请求时，需要将Token以请求头的方式发送到服务器，防止恶意调用接口，服务器将会判断身份。部分接口文档用例如下。</p>
+<blockquote>
+<p><strong>表3-1 用户接口表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>URL</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>登录</td>
+<td>/main/userlogin</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>注册</td>
+<td>/user/register</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>发送验证码</td>
+<td>/main/get_email_code</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-2 群组接口表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>URL</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建群组</td>
+<td>/group/create_group</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>查询群组</td>
+<td>/group/select_group</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>修改群组</td>
+<td>/group/update_group</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>删除群组</td>
+<td>/group/delete_group_by_id</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>申请加群</td>
+<td>/group_request/add_request</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>查询加群请求</td>
+<td>/group_request/select_request</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>群组批量通过加群请求</td>
+<td>/group_request/pass_request</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>群组批量拒绝加群请求</td>
+<td>/group_request/refuse_request</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>获取群组内成员</td>
+<td>/group/select_group_users</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>群组内删除成员</td>
+<td>/group/delete_user_group</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-3 试题接口表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>URL</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>添加试题</td>
+<td>/subject/add_subject</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>查询试题</td>
+<td>/subject/select_subject</td>
+<td>GET</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>表3-4 试卷接口表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>URL</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看试卷粗略信息</td>
+<td>/test_paper/select_test_paper_no_detail</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>新增试卷</td>
+<td>/test_paper/add_test_paper</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>   <strong>表3-5 考试接口表</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>接口名称</th>
+<th>URL</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建考试</td>
+<td>/exam/create_exam_activity</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>查询考试</td>
+<td>/exam/select_exam_activity</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>修改考试</td>
+<td>/exam/update_exam_activity</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>考生端获取参加考试</td>
+<td>/select_user_participant_exam</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>获取试卷</td>
+<td>/exam/take_part_in_exam</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>完成试卷</td>
+<td>/exam/finish_exam</td>
+<td>POST</td>
+</tr>
+</tbody></table>
+<h2 id="3-6-前端路由设计"><a href="#3-6-前端路由设计" class="headerlink" title="3.6  前端路由设计"></a>3.6  前端路由设计</h2><p>前端路由设计如图3-9所示。</p>
+<p><img src="/2022/03/16/ExamOnline/13.png" alt></p>
+<blockquote>
+<p><strong>图3-9 前端路由设计图</strong></p>
+</blockquote>
+<h1 id="4-系统实现"><a href="#4-系统实现" class="headerlink" title="4  系统实现"></a>4  系统实现</h1><h2 id="4-1-系统功能模块设计与实现"><a href="#4-1-系统功能模块设计与实现" class="headerlink" title="4.1  系统功能模块设计与实现"></a>4.1  系统功能模块设计与实现</h2><p>​    在线考试系统的架构图如图4-1，系统包括四个逻辑层，分别是视图层、控制层、业务逻辑层、持久层，这样分层处理便于各层职能明确化，逻辑清晰化，同时可以降低系统的业务耦合度，便于业务修改与扩展。</p>
+<p><img src="/2022/03/16/ExamOnline/14.png" alt></p>
+<blockquote>
+<p><strong>图4-1 总体架构图</strong></p>
+</blockquote>
+<h2 id="4-2-登录功能"><a href="#4-2-登录功能" class="headerlink" title="4.2  登录功能"></a>4.2  登录功能</h2><p>​    本系统具有一定的保密性，所以需要登陆，进入界面。登陆界面采用div+css布局。登录模块，通过登录自己的账号，根据该账号的注册身份进入相应的页面。界面展示图如图4-2所示。</p>
+<p>​    登录顺序图如图4-3所示，用户通过登录界面，提交表单，前端通过Axios发送请求，后端在控制层接收请求及参数，控制层决定该请求由哪个业务进行处理，从而调用业务层，并将参数传给业务层，业务层进行详细的业务处理，调用数据层执行数据的操作，然后生成一个唯一的Token值，供用户请求使用。<br><img src="/2022/03/16/ExamOnline/15.png" alt></p>
+<blockquote>
+<p><strong>图4-2 登录界面</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/16.png" alt></p>
+<blockquote>
+<p><strong>4-3 登录顺序图</strong></p>
+</blockquote>
+<h2 id="4-3-教师端"><a href="#4-3-教师端" class="headerlink" title="4.3  教师端"></a>4.3  教师端</h2><h3 id="4-3-1-教师后台管理"><a href="#4-3-1-教师后台管理" class="headerlink" title="4.3.1 教师后台管理"></a>4.3.1 教师后台管理</h3><p>​    <strong>教师端后台管理界面Ant Design中的Layout布局，采用了单页面应用程序，支持响应式布局，分为顶栏、左侧导航栏和内容区域。</strong>后台管理界面架构进行了前端路由设计，没有页面之间的切换，通过异步获取数据以及数据的操作。后台管理主界面如图4-4所示。<strong>教师端一共有六大功能模块</strong>，首页是一个快捷路径和数据统计窗口，可以快速进行操作，并且可以查看所有试题数、试卷数和考试数。六大功能模块包括群组管理、考试管理、试卷管理、题库管理、成绩管理和申请通知。</p>
+<p><img src="/2022/03/16/ExamOnline/17.png" alt></p>
+<blockquote>
+<p><strong>图4-4 教师端管理界面图</strong></p>
+</blockquote>
+<h3 id="4-3-2-群组管理模块"><a href="#4-3-2-群组管理模块" class="headerlink" title="4.3.2  群组管理模块"></a>4.3.2  群组管理模块</h3><p>教师端可以实现创建群组，修改群组，删除群组，添加群组内考生，删除群组内考生和导出群组内考生等功能，方便对考生进行管理，界面图如图4-5，群组顺序图如图4-6所示。</p>
+<p><img src="/2022/03/16/ExamOnline/18.png" alt></p>
+<blockquote>
+<p><strong>图4-5 教师端群组管理图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/19.png" alt></p>
+<blockquote>
+<p><strong>4-6 群组管理顺序图</strong></p>
+</blockquote>
+<h3 id="4-3-3-成绩管理"><a href="#4-3-3-成绩管理" class="headerlink" title="4.3.3 成绩管理"></a>4.3.3 成绩管理</h3><p>教师端可以查看每一个考试中考生的成绩和试卷答题详情，并且可进行可视化分析和手动修改考生成绩，方便教师对考试情况有更直观的了解。成绩管理顺序图如图4-7所示，部分效果图如图4-8和图4-9所示。</p>
+<p><img src="/2022/03/16/ExamOnline/20.png" alt></p>
+<blockquote>
+<p><strong>图4-7 成绩管理顺序图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/21.png" alt></p>
+<blockquote>
+<p><strong>图4-8 考试成绩可视化分析图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/22.png" alt></p>
+<blockquote>
+<p><strong>图4-9 查看考生试卷详情效果图</strong></p>
+</blockquote>
+<h3 id="4-3-4-题库管理模块"><a href="#4-3-4-题库管理模块" class="headerlink" title="4.3.4  题库管理模块"></a>4.3.4  题库管理模块</h3><p>教师端可实现查看题库，添加试题等功能，试题录入查看更加方便。顺序图如图4-10、效果图如图4-11和图4-12所示。</p>
+<p><img src="/2022/03/16/ExamOnline/23.png" alt></p>
+<blockquote>
+<p><strong>图4-10 录入试题顺序图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/24.png" alt></p>
+<blockquote>
+<p><strong>图4-11 添加试题效果图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/25.png" alt></p>
+<blockquote>
+<p><strong>图4-12 查看试题效果图</strong></p>
+</blockquote>
+<h3 id="4-3-5-试卷管理模块"><a href="#4-3-5-试卷管理模块" class="headerlink" title="4.3.5  试卷管理模块"></a>4.3.5  试卷管理模块</h3><p>教师端可实现查看试卷试题，添加试题并创建试卷等功能，选题更加方便，试卷可用于考试直接选用。如图4-13和图4-14所示。</p>
+<p><img src="/2022/03/16/ExamOnline/26.png" alt></p>
+<blockquote>
+<p><strong>图4-13 查看试卷试题图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/27.png" alt></p>
+<blockquote>
+<p><strong>图4-14 创建试卷图</strong></p>
+</blockquote>
+<h3 id="4-3-6-考试管理模块"><a href="#4-3-6-考试管理模块" class="headerlink" title="4.3.6  考试管理模块"></a>4.3.6  考试管理模块</h3><p>教师端可进行查看已发布考试和创建考试，修改考试信息和查看考试试题等操作，创建考试操作简单，实现一“创”即考。效果如图4-15和图4-16所示。</p>
+<p><img src="/2022/03/16/ExamOnline/28.png" alt></p>
+<blockquote>
+<p><strong>图4-15 教师端考试管理效果图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/29.png" alt></p>
+<blockquote>
+<p><strong>图4-16 教师端创建考试效果图</strong></p>
+</blockquote>
+<h3 id="4-3-7-通知管理模块"><a href="#4-3-7-通知管理模块" class="headerlink" title="4.3.7 通知管理模块"></a>4.3.7 通知管理模块</h3><p>教师端可以对考生申请加入群组的通知进行管理，效果图如图4-17所示。</p>
+<p><img src="/2022/03/16/ExamOnline/30.png" alt></p>
+<blockquote>
+<p><strong>图4-17 通知管理模块效果图</strong></p>
+</blockquote>
+<h2 id="4-4-考生端"><a href="#4-4-考生端" class="headerlink" title="4.4  考生端"></a>4.4  考生端</h2><p><strong>考生端有五大功能模块，包括我的考生，我的成绩，我的分组，我的通知和考试。</strong></p>
+<h3 id="4-4-1-我的群组"><a href="#4-4-1-我的群组" class="headerlink" title="4.4.1 我的群组"></a>4.4.1 我的群组</h3><p>学生端可以实现搜索申请群组和查看已加入的群组等功能，组别清晰明了。考生申请加入群组顺序图如图4-18，效果图如图4-19所示。</p>
+<p><img src="/2022/03/16/ExamOnline/31.png" alt></p>
+<blockquote>
+<p><strong>图4-18 申请加入群组顺序图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/32.png" alt></p>
+<blockquote>
+<p><strong>图4-19 考试端查看群组图</strong></p>
+</blockquote>
+<h3 id="4-4-2-我的考试"><a href="#4-4-2-我的考试" class="headerlink" title="4.4.2 我的考试"></a>4.4.2 我的考试</h3><p>考生可以查看可以参加的所有考试信息并在规定时间内参加考试。参加考试顺序图如图4-20所示，考试答题界面如图4-21所示。</p>
+<p><img src="/2022/03/16/ExamOnline/33.png" alt></p>
+<blockquote>
+<p><strong>图4-20 参加考试顺序图</strong></p>
+</blockquote>
+<p><img src="/2022/03/16/ExamOnline/34.png" alt></p>
+<blockquote>
+<p><strong>图4-20 答题界面效果图</strong></p>
+</blockquote>
+<h3 id="4-4-3-我的成绩"><a href="#4-4-3-我的成绩" class="headerlink" title="4.4.3 我的成绩"></a>4.4.3 我的成绩</h3><p>考生端可以查看考生参加考试的成绩。效果图如图4-20所示。</p>
+<p><img src="/2022/03/16/ExamOnline/35.png" alt></p>
+<blockquote>
+<p><strong>图4-21 我的成绩效果图</strong></p>
+</blockquote>
+<h3 id="4-4-4-我的通知"><a href="#4-4-4-我的通知" class="headerlink" title="4.4.4 我的通知"></a>4.4.4 我的通知</h3><p>考生端可以在我的通知接受教师端公布的通知和通过群组的消息。效果图如图4-22所示。</p>
+<p><img src="/2022/03/16/ExamOnline/36.png" alt></p>
+<blockquote>
+<p><strong>图4-22 我的通知效果图</strong></p>
+</blockquote>
+<h2 id="4-5-系统关键问题解决"><a href="#4-5-系统关键问题解决" class="headerlink" title="4.5  系统关键问题解决"></a>4.5  系统关键问题解决</h2><h3 id="4-5-1-鉴权身份认证技术"><a href="#4-5-1-鉴权身份认证技术" class="headerlink" title="4.5.1  鉴权身份认证技术"></a>4.5.1  鉴权身份认证技术</h3><p>因为本次项目采用的前后端分离开发模式，为了防止接口恶意访问，进行CSRF攻击，系统采用了鉴权身份认证技术。简单来说就是用户在浏览器中输入用户和密码，后台服务器通过加密或者其他逻辑，生成一个Token。前端获取到Token，存储到cookie或者localStorage中，在接下来的请求中，将token通过url参数或者HTTP Header头部传入到服务器。服务器获取token值，通过查找数据库判断当前token是否有效，保证用户在一次访问内，能够重复使用用户信息而不需要查询。同时Token单点登录对于服务器端来讲，压力会比较小。并且在分布式上具有较大的优势。</p>
+<h3 id="4-5-2-跨域"><a href="#4-5-2-跨域" class="headerlink" title="4.5.2  跨域"></a>4.5.2  跨域</h3><p>因为本项目采用B/S架构下的前后端分离开发模式，这种模式下首先需要解决的问题就是同源策略导致的跨域问题。同源策略是浏览器的一种安全机制，它是指浏览器会阻止对非同源页面的DOM操作以及XMLHttpRequest对象向非同源服务器发起http请求。虽然这些限制是十分必要的，但有时会影响我们的正常开发需求，尤其在前后端分离开发模式下，经常需要跨域进行业务交互。</p>
+<p>目前业界常用的解决跨域的方法包括Jsonp、Ngnix反向代理和CORS跨域。本项目采用的是Ngnix反向代理技术解决跨域问题。</p>
+<h1 id="5-项目感想"><a href="#5-项目感想" class="headerlink" title="5  项目感想"></a>5  项目感想</h1><p>本次实践项目是在线考试平台的设计与实现，该项目主要是实现了教师端和考生端，包括了群组管理、试题管理、试卷管理、考试管理、成绩管理、通知管理和考试等基本的功能。在这一段时间里，通过实践，我学会了不少知识。</p>
+<p>在本产品的开发阶段，我们两人相互协作，完成后台各种逻辑的实现和可视化页面的创作，为了让用户有更好视觉效果和体验效果，我们尽最大努力去了解用户的需求，完成我们的产品。</p>
+<p>项目开发阶段，我们决定使用SpringBoot和React开发网站，采用前后端分离开发模式，我们相互交流，探讨后端和前端的交互问题，优化前端数据相应时间和页面视觉效果，努力做到让用户满意。为了用户的操作简捷，我们的每一个操作流程都进行精心设计。当用户操作时，会有系统的提示，让用户拥有很好的交互体验。</p>
+<p>在项目的创作过程中，我们都学到了很多东西，从一开始的项目构建，项目的设计分析，项目的分工，项目的实现，到最后的项目部署，我们都用心去制作，采用的项目框架都是经过我们用心思考，采用React框架，为未来功能的升级演进，服务优化和移动端的转化实现第一步。从我们团队分配任务后，我们各司其职，不断的学习新的知识，遇到难题，讨论解决，看官方文档学习。我们投入时间，去进行数据的优化，页面的美化，页面的响应式布局等，目的就是方便用户。最后我们脚踏实地地完成项目。</p>
+<p>总而言之，经过了这次实战，自己的综合能力有了明显的提高，实战让我不仅仅学会知识，更是让我学会实践，将自己所学的知识运用出来，这也是以后非常重要的一个环节–学以致用。</p>]]></content>
+      <categories>
+        <category>项目实战</category>
+      </categories>
+      <tags>
+        <tag>项目实战</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构-排序（五）快速排序</title>
     <url>/2021/12/13/Sort5/</url>
     <content><![CDATA[<h1 id="数据结构-排序（五）快速排序"><a href="#数据结构-排序（五）快速排序" class="headerlink" title="数据结构-排序（五）快速排序"></a>数据结构-排序（五）快速排序</h1><h2 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h2><blockquote>
@@ -3031,7 +3719,7 @@
       </categories>
       <tags>
         <tag>C语言</tag>
-        <tag>项目</tag>
+        <tag>项目实战</tag>
       </tags>
   </entry>
 </search>
