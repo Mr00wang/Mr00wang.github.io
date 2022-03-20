@@ -47,23 +47,20 @@
   };
 </script>
 
-  <meta name="description" content="数据结构算法每日一练（一）斐波那契数列 题目：写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：F(0) &#x3D; 0, F(1) &#x3D; 1 F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1. （1）请按照上面的定义用递归的方式求第n向Fibonacci数列的值: int fibonacci(int n); （2）给出此递归函数">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构算法每日一练（一）斐波那契数列">
-<meta property="og:url" content="https://mr00wang.github.io/2021/09/18/DSP1/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="数据结构-排序（六）简单选择排序">
+<meta property="og:url" content="https://mr00wang.github.io/2022/03/20/Sort6/index.html">
 <meta property="og:site_name" content="北以晨光">
-<meta property="og:description" content="数据结构算法每日一练（一）斐波那契数列 题目：写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：F(0) &#x3D; 0, F(1) &#x3D; 1 F(N) &#x3D; F(N - 1) + F(N - 2), 其中 N &gt; 1. （1）请按照上面的定义用递归的方式求第n向Fibonacci数列的值: int fibonacci(int n); （2）给出此递归函数">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mr00wang.github.io/2021/09/18/DSP1/D:%5CBlog%5CMrWang%5Csource_posts%5CDSP1%5C%E4%B8%80.png">
-<meta property="article:published_time" content="2021-09-18T01:19:54.000Z">
-<meta property="article:modified_time" content="2021-09-19T02:51:23.304Z">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/20/Sort6/SelectSort.gif">
+<meta property="article:published_time" content="2022-03-20T00:35:02.000Z">
+<meta property="article:modified_time" content="2022-03-20T00:46:52.577Z">
 <meta property="article:author" content="北以晨光">
 <meta property="article:tag" content="C&#x2F;C++数据结构">
-<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mr00wang.github.io/2021/09/18/DSP1/D:%5CBlog%5CMrWang%5Csource_posts%5CDSP1%5C%E4%B8%80.png">
+<meta name="twitter:image" content="https://mr00wang.github.io/2022/03/20/Sort6/SelectSort.gif">
 
-<link rel="canonical" href="https://mr00wang.github.io/2021/09/18/DSP1/">
+<link rel="canonical" href="https://mr00wang.github.io/2022/03/20/Sort6/">
 
 
 <script id="page-configurations">
@@ -75,7 +72,7 @@
   };
 </script>
 
-  <title>数据结构算法每日一练（一）斐波那契数列 | 北以晨光</title>
+  <title>数据结构-排序（六）简单选择排序 | 北以晨光</title>
   
 
 
@@ -193,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mr00wang.github.io/2021/09/18/DSP1/">
+    <link itemprop="mainEntityOfPage" href="https://mr00wang.github.io/2022/03/20/Sort6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar1.jpg">
@@ -206,7 +203,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数据结构算法每日一练（一）斐波那契数列
+          数据结构-排序（六）简单选择排序
         </h1>
 
         <div class="post-meta">
@@ -216,24 +213,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-09-18 09:19:54" itemprop="dateCreated datePublished" datetime="2021-09-18T09:19:54+08:00">2021-09-18</time>
+              <time title="创建时间：2022-03-20 08:35:02 / 修改时间：08:46:52" itemprop="dateCreated datePublished" datetime="2022-03-20T08:35:02+08:00">2022-03-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-19 10:51:23" itemprop="dateModified" datetime="2021-09-19T10:51:23+08:00">2021-09-19</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构算法每日一练</span>
+                  <a href="/categories/C-C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++数据结构</span>
                   </a>
                 </span>
             </span>
@@ -270,39 +261,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="数据结构算法每日一练（一）斐波那契数列"><a href="#数据结构算法每日一练（一）斐波那契数列" class="headerlink" title="数据结构算法每日一练（一）斐波那契数列"></a>数据结构算法每日一练（一）斐波那契数列</h1><blockquote>
-<p>题目：写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：<br>F(0) = 0,</p>
-<p>F(1) = 1</p>
-<p>F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.</p>
-<p>（1）请按照上面的定义用递归的方式求第n向Fibonacci数列的值: int fibonacci(int n);</p>
-<p>（2）给出此递归函数的时间复杂度。</p>
+        <h4 id="1、算法思想"><a href="#1、算法思想" class="headerlink" title="1、算法思想"></a>1、算法思想</h4><blockquote>
+<p><strong>选择排序算法思想：</strong> 每⼀趟在待排序元素中选取关键字最小（或最大）的元素加入有序子序列。n个元素的简单选择排序需要 <strong>n-1 趟处理</strong></p>
+<p><img src="/2022/03/20/Sort6/SelectSort.gif" alt="QuickSort"></p>
 </blockquote>
-<a id="more"></a>
+<h4 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 简单选择排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123; <span class="comment">//n - 1趟</span></span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">min</span> = i; <span class="comment">//记录最小元素位置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123; <span class="comment">//再arr[i...n-1]中选择最小元素</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[<span class="built_in">min</span>]) &#123; <span class="comment">//更新最小位置</span></span><br><span class="line">                <span class="built_in">min</span> = j;</span><br><span class="line">            &#125;<span class="comment">//if</span></span><br><span class="line">        &#125;<span class="comment">//for</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">min</span> != i) &#123; <span class="comment">//交换最小值</span></span><br><span class="line">            swap(arr[i], arr[<span class="built_in">min</span>]); <span class="comment">//交换顺序</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出数组</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">12</span>, <span class="number">28</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">48</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">28</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr初始数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr简单选择排序"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    SelectSort(arr, n);c</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr排序后数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>（1）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fibonacci</span> <span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> res = fibonacci (n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>（2）</p>
-<p>递归结构图如下：</p>
-<p><img src="/2021/09/18/DSP1/D:%5CBlog%5CMrWang%5Csource_posts%5CDSP1%5C%E4%B8%80.png" alt></p>
-<p><strong>1、时间复杂度为(二叉树的节点个数）：</strong></p>
-<p>因为递归后不属于完全二叉树，因此结点小于$(2^h)-1$，近似归为$(2^h)$</p>
-<p><strong>时间复杂度近似为</strong> $(2^h)-1= O(2^n)$</p>
-<p>更精确一些时间复杂度为$O(F(n))$</p>
-<p>$F(n)=\frac{1}{\sqrt{5}}[(\frac{1+\sqrt{5}}{2})^n - (\frac{1-\sqrt{5}}{2})^n]$</p>
-<p>$O(F(n)) = O((\frac{1+\sqrt{5}}{2})^n)$</p>
-<p><strong>2、空间复杂度为(树的高度)：</strong>h = $O(n)$.</p>
-<p>二叉树的高度h根据具体数据推算为 n - 1</p>
+
+<h4 id="3、算法效率分析"><a href="#3、算法效率分析" class="headerlink" title="3、算法效率分析"></a>3、算法效率分析</h4><blockquote>
+<p><strong>1、空间复杂度：</strong> <strong>O(1)</strong>  </p>
+<p><strong>2、时间复杂度</strong></p>
+<p>⽆论有序、逆序、还是乱序，⼀定需要 n-1 趟处理  </p>
+<p><strong>比较次数 = (n - 1) + (n - 2 )+…+ 1 = $\frac{n(n-1)}{2}$ ；交换次数 &lt; n - 1；</strong></p>
+<p><strong>时间复杂度：$O(n^2)$</strong>  </p>
+<p><strong>3、稳定性：</strong> <strong>不稳定</strong>  </p>
+<p><strong>4、适⽤性：</strong> <strong>既可以用于顺序表，也可用于链表</strong>  </p>
 </blockquote>
-<blockquote>
-<p>递归算法时间复杂度过大，优化算法，采取递推算法即动态规划</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>  fib[<span class="number">101</span>];			<span class="comment">//采用数组保存中间结果</span></span><br><span class="line">    fib[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    fib[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">        fib[i] = fib[i - <span class="number">1</span>] + fib[i - <span class="number">2</span>];</span><br><span class="line">    <span class="keyword">return</span> fib[n];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n ;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> res = fibonacci (n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>时间复杂度为：</strong>$O(n)$</p>
-<p><strong>空间复杂度为：</strong> $O(1)$.</p>
-</blockquote>
-
     </div>
 
 
@@ -340,19 +315,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\09\24\DSP6\" rel="bookmark">数据结构算法每日一练（六）数组主元素</a></div>
+      <div class="popular-posts-title"><a href="\2021\09\23\DSP5\" rel="bookmark">数据结构算法每日一练（五）顺序表合并</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\11\21\DSP11\" rel="bookmark">数据结构算法每日一练（十一）链表直接插入排序</a></div>
+      <div class="popular-posts-title"><a href="\2021\09\11\DataStructure-preface1\" rel="bookmark">数据结构-绪论（一）</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\11\10\DSP10\" rel="bookmark">数据结构算法每日一练（十）年龄排序</a></div>
+      <div class="popular-posts-title"><a href="\2021\12\01\Sort4\" rel="bookmark">数据结构-排序（四）冒泡排序</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\10\01\DSP9\" rel="bookmark">数据结构算法每日一练（九）查找链表倒数元素</a></div>
+      <div class="popular-posts-title"><a href="\2021\12\01\Sort3\" rel="bookmark">数据结构-排序（三）希尔排序</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\09\30\DSP8\" rel="bookmark">数据结构算法每日一练（八）数组循环队列</a></div>
+      <div class="popular-posts-title"><a href="\2021\11\24\Sort2\" rel="bookmark">数据结构-排序（二）插入排序</a></div>
     </li>
   </ul>
 
@@ -385,7 +360,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mr00wang.github.io/2021/09/18/DSP1/" title="数据结构算法每日一练（一）斐波那契数列">https://mr00wang.github.io/2021/09/18/DSP1/</a>
+    <a href="https://mr00wang.github.io/2022/03/20/Sort6/" title="数据结构-排序（六）简单选择排序">https://mr00wang.github.io/2022/03/20/Sort6/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -397,7 +372,6 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/C-C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> C/C++数据结构</a>
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           </div>
 
         
@@ -406,13 +380,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/18/Stack2/" rel="prev" title="数据结构-栈和队列（三）栈和队列的应用">
-      <i class="fa fa-chevron-left"></i> 数据结构-栈和队列（三）栈和队列的应用
+    <a href="/2022/03/16/ExamOnline/" rel="prev" title="基于SpringBoot和React的在线考试平台">
+      <i class="fa fa-chevron-left"></i> 基于SpringBoot和React的在线考试平台
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/09/19/String1/" rel="next" title="数据结构-串和数组（一）串基本概念">
-      数据结构-串和数组（一）串基本概念 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -472,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构算法每日一练（一）斐波那契数列"><span class="nav-text">数据结构算法每日一练（一）斐波那契数列</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、算法思想"><span class="nav-text">1、算法思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、代码实现"><span class="nav-text">2、代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、算法效率分析"><span class="nav-text">3、算法效率分析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
