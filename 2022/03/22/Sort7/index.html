@@ -47,21 +47,24 @@
   };
 </script>
 
-  <meta name="description" content="数据结构算法每日一练（二）Lagureer多项式 1、N次Laguerre多项式$P_n(x)$的递归定义是：$P_0(x)&#x3D;1$$P_1(x)&#x3D;1-x$$P_n(x) &#x3D; (2n-1-x) P_{n-1}(x) - (n-1)^2 P_{n-2}(x) (n&gt;1)$ (1)请按照上面的定义用递归的方式求n次Lagureer 多项式在x处的值: double laguerre (double">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构算法每日一练（二）Lagureer多项式">
-<meta property="og:url" content="https://mr00wang.github.io/2021/09/20/DSP2/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="数据结构-排序（七）堆排序">
+<meta property="og:url" content="https://mr00wang.github.io/2022/03/22/Sort7/index.html">
 <meta property="og:site_name" content="北以晨光">
-<meta property="og:description" content="数据结构算法每日一练（二）Lagureer多项式 1、N次Laguerre多项式$P_n(x)$的递归定义是：$P_0(x)&#x3D;1$$P_1(x)&#x3D;1-x$$P_n(x) &#x3D; (2n-1-x) P_{n-1}(x) - (n-1)^2 P_{n-2}(x) (n&gt;1)$ (1)请按照上面的定义用递归的方式求n次Lagureer 多项式在x处的值: double laguerre (double">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-20T02:33:08.000Z">
-<meta property="article:modified_time" content="2021-09-20T02:37:17.364Z">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/22/Sort7/1.jpg">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/22/Sort7/2.jpg">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/22/Sort7/3.png">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/22/Sort7/5.jpg">
+<meta property="og:image" content="https://mr00wang.github.io/2022/03/22/Sort7/4.png">
+<meta property="article:published_time" content="2022-03-22T02:04:54.000Z">
+<meta property="article:modified_time" content="2022-03-25T12:33:54.089Z">
 <meta property="article:author" content="北以晨光">
 <meta property="article:tag" content="C&#x2F;C++数据结构">
-<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mr00wang.github.io/2022/03/22/Sort7/1.jpg">
 
-<link rel="canonical" href="https://mr00wang.github.io/2021/09/20/DSP2/">
+<link rel="canonical" href="https://mr00wang.github.io/2022/03/22/Sort7/">
 
 
 <script id="page-configurations">
@@ -73,7 +76,7 @@
   };
 </script>
 
-  <title>数据结构算法每日一练（二）Lagureer多项式 | 北以晨光</title>
+  <title>数据结构-排序（七）堆排序 | 北以晨光</title>
   
 
 
@@ -191,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mr00wang.github.io/2021/09/20/DSP2/">
+    <link itemprop="mainEntityOfPage" href="https://mr00wang.github.io/2022/03/22/Sort7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar1.jpg">
@@ -204,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数据结构算法每日一练（二）Lagureer多项式
+          数据结构-排序（七）堆排序
         </h1>
 
         <div class="post-meta">
@@ -214,18 +217,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-20 10:33:08 / 修改时间：10:37:17" itemprop="dateCreated datePublished" datetime="2021-09-20T10:33:08+08:00">2021-09-20</time>
+              <time title="创建时间：2022-03-22 10:04:54" itemprop="dateCreated datePublished" datetime="2022-03-22T10:04:54+08:00">2022-03-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-25 20:33:54" itemprop="dateModified" datetime="2022-03-25T20:33:54+08:00">2022-03-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构算法每日一练</span>
+                  <a href="/categories/C-C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++数据结构</span>
                   </a>
                 </span>
             </span>
@@ -243,14 +252,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>619</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -262,21 +271,63 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="数据结构算法每日一练（二）Lagureer多项式"><a href="#数据结构算法每日一练（二）Lagureer多项式" class="headerlink" title="数据结构算法每日一练（二）Lagureer多项式"></a>数据结构算法每日一练（二）Lagureer多项式</h1><blockquote>
-<p>1、N次Laguerre多项式$P_n(x)$的递归定义是：<br>$P_0(x)=1$<br>$P_1(x)=1-x$<br>$P_n(x) = (2n-1-x) P_{n-1}(x) - (n-1)^2 P_{n-2}(x) (n&gt;1)$</p>
-<p>(1)请按照上面的定义用递归的方式求n次Lagureer 多项式在x处的值: double laguerre (double x，int n);</p>
-<p>(2)给出此递归函数的时间复杂度。</p>
+        <h1 id="数据结构-排序（七）堆排序"><a href="#数据结构-排序（七）堆排序" class="headerlink" title="数据结构-排序（七）堆排序"></a>数据结构-排序（七）堆排序</h1><blockquote>
+<p><strong>若n个关键字序列L[1…n] 满⾜下面某⼀条性质，则称为堆（Heap）</strong> ：<br><strong>①</strong> 若满足：L(i) ≥ L(2i)且L(i) ≥ L(2i+1) （1 ≤ i ≤n/2 ） —— 大根堆（大顶堆）</p>
+<p><img src="/2022/03/22/Sort7/1.jpg" alt></p>
+<p><strong>②</strong> 若满足：L(i) ≤ L(2i)且L(i) ≤ L(2i+1) （1 ≤ i ≤n/2 ） —— 小根堆（小顶堆）  </p>
+<p><img src="/2022/03/22/Sort7/2.jpg" alt></p>
 </blockquote>
-<a id="more"></a>
+<h2 id="1、建立大根堆"><a href="#1、建立大根堆" class="headerlink" title="1、建立大根堆"></a>1、建立大根堆</h2><blockquote>
+<p>大根堆： 根 ≥ 左、右  </p>
+<p><strong>思路：</strong>把所有非终端结点都检查⼀遍，是否满足大根堆的要求，如果不满足，则进行调整。检查当前结点是否满足<strong>根≥左、右。</strong>若不满足，将当前<strong>结点与更大的⼀个孩子互换。</strong>若元素互换破坏了下⼀级的堆，则采用相同的方法继续往下调整（小元素不断“下坠”）  </p>
+<p>在顺序存储的完全⼆叉树中， <strong>非终端结点编号 i ≤ ⌊ n / 2 ⌋</strong>  </p>
+</blockquote>
+<h2 id="2、基于大根堆排序"><a href="#2、基于大根堆排序" class="headerlink" title="2、基于大根堆排序"></a>2、基于大根堆排序</h2><blockquote>
+<p>堆排序：每⼀趟将堆顶元素加入有序子序列（与待排序序列中的最后⼀个元素交换）</p>
+<p>选择排序：每⼀趟在待排序元素中选取关键字最大的元素加入有序子序列并将待排序元素序列再次调整为大根堆（小元素不断“下坠”）  </p>
+<p><strong>图解示例请看6。</strong></p>
+</blockquote>
+<h2 id="3、堆的插入和删除"><a href="#3、堆的插入和删除" class="headerlink" title="3、堆的插入和删除"></a>3、堆的插入和删除</h2><blockquote>
+<p><strong>1、插入</strong></p>
+<p>对于小根堆，新元素放到表尾，与父节点对比，若新元素比父节点更小，则将⼆者互换。新元素就这样⼀路“上升”，直到无法继续上升为止。</p>
+<p><strong>每次“上升”调整需要对比一次关键字</strong></p>
+<p><strong>2、删除</strong></p>
+<p>被删除的元素用堆底元素替代，然后让该元素不断“下坠”，直到无法下坠为止。</p>
+<p><strong>每次“下坠”调整可能需要对比一次关键字，也可能需要对比两次关键字</strong></p>
+</blockquote>
+<h2 id="4、代码实现"><a href="#4、代码实现" class="headerlink" title="4、代码实现"></a>4、代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以 k 为为根的子树调整为大根堆</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param k</span></span><br><span class="line"><span class="comment"> * @param len</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeadAdjust</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> k, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    arr[<span class="number">0</span>] = arr[k]; <span class="comment">//暂存子树的根结点</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> * k; i &lt;= len; i *= <span class="number">2</span>) &#123; <span class="comment">//沿key较大的子节点向下筛选</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; len &amp;&amp; arr[i] &lt; arr[i + <span class="number">1</span>]) &#123;</span><br><span class="line">            i++; <span class="comment">//取key较大的子节点的下标</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr[<span class="number">0</span>] &gt;= arr[i]) <span class="comment">//筛选结束</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            arr[k] = arr[i]; <span class="comment">//修改arr[i]调整到双亲结点</span></span><br><span class="line">            k = i; <span class="comment">//修改k值，继续向下筛选</span></span><br><span class="line">        &#125;<span class="comment">//else</span></span><br><span class="line">    &#125;<span class="comment">//for</span></span><br><span class="line">    arr[k] = arr[<span class="number">0</span>]; <span class="comment">//被筛选结点的值放入最终位置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 建立大根堆</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param len</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildMaxHeap</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len / <span class="number">2</span>; i &gt; <span class="number">0</span>; i--) &#123; <span class="comment">//从后往前调整所有非终端结点</span></span><br><span class="line">        HeadAdjust(arr, i, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 大根堆排序</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param len</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeadSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    BuildMaxHeap(arr, len); <span class="comment">//初始建堆</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = len; i &gt; <span class="number">1</span>; i--) &#123; <span class="comment">//n-1趟的交换和建堆过程</span></span><br><span class="line">        swap(arr[i], arr[<span class="number">1</span>]);</span><br><span class="line">        HeadAdjust(arr, <span class="number">1</span>, i - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出数组</span></span><br><span class="line"><span class="comment"> * @param arr</span></span><br><span class="line"><span class="comment"> * @param n</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintArray</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">"  "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[] = &#123;<span class="number">0</span>, <span class="number">12</span>, <span class="number">28</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">48</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">28</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr初始数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"arr堆排序"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    HeadSort(arr, n - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"输出arr排序后数组"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    PrintArray(arr, n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="5、算法效率分析"><a href="#5、算法效率分析" class="headerlink" title="5、算法效率分析"></a>5、算法效率分析</h2><blockquote>
+<p><strong>1、建堆过程时间复杂度</strong></p>
+<p>结论：⼀个结点，每“下坠”⼀层，最多只需对比关键字2次<br>若树高为h，某结点在第 i 层，则将这个结点向下调整最多只需要“下坠” h-i 层，<strong>关键字对比次数不超过 2(h - i)</strong><br><strong>n个结点的完全二叉树树高 $h=⌊ log_2n ⌋ + 1$</strong>  </p>
+<p>第 i 层最多有 $2^{i-1}$ 个结点，而只有第 1 ~ (h-1) 层的结点才有可能需要“下坠”调整。</p>
+<p>将整颗树调整为大根堆，关键字对比次数不超过4n</p>
+<p><strong>$\sum_{i=h-1}^{1}2^{i-1}*2(h-i)$</strong></p>
+<p><strong>$=\sum_{i=h-1}^{1}2^i(h-i)$</strong></p>
+<p><strong>$= \sum_{j=1}^{h-1}2^{h-j}*j $</strong></p>
+<p><strong>$\le 2n\sum_{j=1}^{h-1}\frac{j}{2^j}$</strong></p>
+<p><strong>$\le 4n$</strong></p>
+<p><strong>建堆的过程</strong>，关键字对比次数不超过4n，<strong>建堆时间复杂度=O(n)</strong>  </p>
+<p><strong>2、排序过程时间复杂度</strong></p>
+<p>根节点最多“下坠” h-1 层，每下坠⼀层，而每“下坠”⼀层，最多只需对比关键字2次，</p>
+<p>因此每⼀趟排序复杂度不超过 $O(h) = O(log_2n)$。<strong>共n-1 趟</strong>，<strong>总的时间复杂度 =$O(nlog_2n)$</strong></p>
+<p><strong>3、堆排序</strong></p>
+<p><strong>堆排序的空间复杂度：</strong>O(1) </p>
+<p><strong>堆排序的时间复杂度：</strong>$O(n) + O(nlog_2n) = O(nlog_2n)$</p>
+<p><strong>4、稳定性 ：</strong> <strong>不稳定</strong></p>
+</blockquote>
+<h2 id="6、示例"><a href="#6、示例" class="headerlink" title="6、示例"></a>6、示例</h2><blockquote>
+<p><strong>示例：将数组a[8] = [1，4，7，2，5，8，3，6]建成大根堆。画出建堆过程。并画出堆排序过程</strong></p>
+<p><strong>数组插入建堆过程图如下：</strong></p>
+<p><img src="/2022/03/22/Sort7/3.png" alt></p>
+</blockquote>
 <blockquote>
-<p>（1）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">laguerre</span> <span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> - x;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="number">2</span>*n - <span class="number">1</span> - x) * laguerre(x, n - <span class="number">1</span>) - (n - <span class="number">1</span>) * (n - <span class="number">1</span>) * laguerre(x, n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">double</span> x;</span><br><span class="line"><span class="keyword">int</span> n ;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; x &gt;&gt; n;</span><br><span class="line"><span class="keyword">double</span> res = laguerre(x, n);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>（2）时间复杂度为递归调用$O(2^n)$</p>
-<p>详细分析请参照上篇-斐波那契数列</p>
+<p><strong>堆排序示例图如下：</strong></p>
+<p><img src="/2022/03/22/Sort7/5.jpg" alt></p>
 </blockquote>
-
+<blockquote>
+<p><strong>删除示例图如下：</strong><br><img src="/2022/03/22/Sort7/4.png" alt></p>
+</blockquote>
     </div>
 
 
@@ -314,19 +365,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\11\21\DSP11\" rel="bookmark">数据结构算法每日一练（十一）链表直接插入排序</a></div>
+      <div class="popular-posts-title"><a href="\2021\09\11\DataStructure-preface1\" rel="bookmark">数据结构-绪论（一）</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\11\10\DSP10\" rel="bookmark">数据结构算法每日一练（十）年龄排序</a></div>
+      <div class="popular-posts-title"><a href="\2022\03\20\Sort6\" rel="bookmark">数据结构-排序（六）简单选择排序</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\10\01\DSP9\" rel="bookmark">数据结构算法每日一练（九）查找链表倒数元素</a></div>
+      <div class="popular-posts-title"><a href="\2021\12\13\Sort5\" rel="bookmark">数据结构-排序（五）快速排序</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\09\30\DSP8\" rel="bookmark">数据结构算法每日一练（八）数组循环队列</a></div>
+      <div class="popular-posts-title"><a href="\2021\12\01\Sort4\" rel="bookmark">数据结构-排序（四）冒泡排序</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\2021\09\25\DSP7\" rel="bookmark">数据结构算法每日一练（七）数组未出现最小正整数</a></div>
+      <div class="popular-posts-title"><a href="\2021\12\01\Sort3\" rel="bookmark">数据结构-排序（三）希尔排序</a></div>
     </li>
   </ul>
 
@@ -359,7 +410,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://mr00wang.github.io/2021/09/20/DSP2/" title="数据结构算法每日一练（二）Lagureer多项式">https://mr00wang.github.io/2021/09/20/DSP2/</a>
+    <a href="https://mr00wang.github.io/2022/03/22/Sort7/" title="数据结构-排序（七）堆排序">https://mr00wang.github.io/2022/03/22/Sort7/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -371,7 +422,6 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/C-C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> C/C++数据结构</a>
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           </div>
 
         
@@ -380,13 +430,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/20/String2/" rel="prev" title="数据结构-串和数组（二）BF算法">
-      <i class="fa fa-chevron-left"></i> 数据结构-串和数组（二）BF算法
+    <a href="/2022/03/20/Sort6/" rel="prev" title="数据结构-排序（六）简单选择排序">
+      <i class="fa fa-chevron-left"></i> 数据结构-排序（六）简单选择排序
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/09/21/String3/" rel="next" title="数据结构-串和数组（三）KMP算法">
-      数据结构-串和数组（三）KMP算法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -446,7 +493,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构算法每日一练（二）Lagureer多项式"><span class="nav-text">数据结构算法每日一练（二）Lagureer多项式</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构-排序（七）堆排序"><span class="nav-text">数据结构-排序（七）堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、建立大根堆"><span class="nav-text">1、建立大根堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基于大根堆排序"><span class="nav-text">2、基于大根堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、堆的插入和删除"><span class="nav-text">3、堆的插入和删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、代码实现"><span class="nav-text">4、代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、算法效率分析"><span class="nav-text">5、算法效率分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、示例"><span class="nav-text">6、示例</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
