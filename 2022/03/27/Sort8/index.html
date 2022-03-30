@@ -55,7 +55,7 @@
 <meta property="og:image" content="https://mr00wang.github.io/2022/03/27/Sort8/1.png">
 <meta property="og:image" content="https://mr00wang.github.io/2022/03/27/Sort8/2.gif">
 <meta property="article:published_time" content="2022-03-27T08:10:30.000Z">
-<meta property="article:modified_time" content="2022-03-30T02:06:56.153Z">
+<meta property="article:modified_time" content="2022-03-30T12:57:23.613Z">
 <meta property="article:author" content="北以晨光">
 <meta property="article:tag" content="C&#x2F;C++数据结构">
 <meta name="twitter:card" content="summary">
@@ -222,7 +222,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-30 10:06:56" itemprop="dateModified" datetime="2022-03-30T10:06:56+08:00">2022-03-30</time>
+                <time title="修改时间：2022-03-30 20:57:23" itemprop="dateModified" datetime="2022-03-30T20:57:23+08:00">2022-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,8 +286,8 @@
 
 
 <h2 id="三、算法效率分析"><a href="#三、算法效率分析" class="headerlink" title="三、算法效率分析"></a>三、算法效率分析</h2><blockquote>
-<p>⼆叉树的第h层最多有 <strong>$2^{h-1}$</strong>个结点；若树高为h，则应满足 <strong>$n \le 2^{h-1}$</strong> 即 <strong>h - 1 =  ⌈ log<del>2</del>n ⌉</strong></p>
-<p><strong>结论：</strong> n个元素进⾏2路归并排序，<strong>归并趟数为⌈ log<del>2</del>n ⌉</strong></p>
+<p>⼆叉树的第h层最多有 <strong>$2^{h-1}$</strong>个结点；若树高为h，则应满足 <strong>$n\le2^{h-1}$</strong> 即 <strong>h - 1 =  ⌈ log<del>2</del>n ⌉</strong></p>
+<p><strong>结论：</strong> n个元素进⾏2路归并排序，<strong>归并趟数为$⌈ log_2n ⌉$</strong></p>
 <p><strong>1、每趟归并时间复杂度为 O(n)</strong>，则<strong>算法时间复杂度为$O(nlong_2n)$</strong></p>
 <p><strong>2、空间复杂度为O(n)</strong>，来⾃于辅助数组B</p>
 <p><strong>3、稳定性：稳定</strong></p>
@@ -651,6 +651,56 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
