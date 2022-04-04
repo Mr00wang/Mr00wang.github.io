@@ -3,7 +3,7 @@
   <entry>
     <title>AT89S51/52单片机详细英文缩写解释汇总</title>
     <url>/2022/04/03/SingleChip/</url>
-    <content><![CDATA[<h2 id="AT89S51-52单片机详细英文缩写解释汇总"><a href="#AT89S51-52单片机详细英文缩写解释汇总" class="headerlink" title="AT89S51/52单片机详细英文缩写解释汇总"></a>AT89S51/52单片机详细英文缩写解释汇总</h2><h2 id="一、引脚"><a href="#一、引脚" class="headerlink" title="一、引脚"></a>一、引脚</h2><h3 id="1-1-电源引脚"><a href="#1-1-电源引脚" class="headerlink" title="1.1 电源引脚"></a>1.1 电源引脚</h3><ol>
+    <content><![CDATA[<h2 id="一、引脚"><a href="#一、引脚" class="headerlink" title="一、引脚"></a>一、引脚</h2><h3 id="1-1-电源引脚"><a href="#1-1-电源引脚" class="headerlink" title="1.1 电源引脚"></a>1.1 电源引脚</h3><ol>
 <li>$Vcc$（Volt Current Condenser）  电源。</li>
 <li>$Vss$：  接地。</li>
 </ol>
@@ -22,10 +22,10 @@
 </ol>
 <h3 id="1-5-P1口第二功能"><a href="#1-5-P1口第二功能" class="headerlink" title="1.5 P1口第二功能"></a>1.5 P1口第二功能</h3><ol>
 <li>$P1.0/T2$（Time2）：定时器/计数器T2输入引脚。</li>
-<li>$P1.0/T2EX$（Timer 2 EXternal pin）：定时器2外部引脚触发信号。</li>
-<li>$P1.0/MOSI$（Master Output Slave Input）：用于对片内Flash存储器的串行编程和校验。</li>
-<li>$P1.0/MISO$（Master Input Slave Output）：用于对片内Flash存储器的串行编程和校验。</li>
-<li>$P1.0/SCK$（Single Chip Micyoco ）：用于对片内Flash存储器的串行编程和校验的移位脉冲输入引脚。</li>
+<li>$P1.1/T2EX$（Timer 2 EXternal pin）：定时器2外部引脚触发信号。</li>
+<li>$P1.5/MOSI$（Master Output Slave Input）：用于对片内Flash存储器的串行编程和校验。</li>
+<li>$P1.6/MISO$（Master Input Slave Output）：用于对片内Flash存储器的串行编程和校验。</li>
+<li>$P1.7/SCK$（CMOS Clock）：用于对片内Flash存储器的串行编程和校验的移位脉冲输入引脚。</li>
 </ol>
 <h3 id="1-6-P3口第二功能"><a href="#1-6-P3口第二功能" class="headerlink" title="1.6 P3口第二功能"></a>1.6 P3口第二功能</h3><ol>
 <li><p>$P3.0/RXD$（Receive eXternal Data）：串行数据输入口。</p>
@@ -204,7 +204,7 @@
 <li>CJNE（Compare and Jump if Not Equal）：比较不相等跳转指令</li>
 <li>DJNZ（Decrement and Jump if Not Zero）：减1不为0跳转指令</li>
 <li>LCALL（Long Subroutine Call）：长调用指令</li>
-<li>ACALL（Absolute Subroutine Call）：绝对调用指令    </li>
+<li>ACALL（Absolute Subroutine Call）：绝对调用指令  </li>
 <li>RET（Return from Subroutine）：子程序返回指令</li>
 <li>RETI（Return from Interruption）：中断返回指令</li>
 <li>NOP（No operation）：空操作指令</li>
